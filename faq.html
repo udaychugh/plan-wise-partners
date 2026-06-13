@@ -153,6 +153,7 @@
         },
       };
     </script>
+    <script defer src="assets/navbar.js"></script>
     <style>
       .fade-in {
         animation: fadeIn 0.8s ease-out forwards;
@@ -193,96 +194,7 @@
   <body
     class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"
   >
-    <!-- TopNavBar -->
-    <nav
-      class="fixed w-full top-0 z-50 bg-surface/90 dark:bg-surface-container-lowest/90 border-b border-outline-variant/30 backdrop-blur-md shadow-sm transition-all duration-300"
-      id="main-header"
-    >
-      <div
-        class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"
-      >
-        <a class="flex items-center gap-2" href="index.html">
-          <img
-            alt="PlanWise Logo"
-            class="h-10 object-contain"
-            src="assets/logo.png"
-          />
-        </a>
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-6">
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="index.html"
-            >Home</a
-          >
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="service-agreement.html"
-            >Service Agreement</a
-          >
-          <a
-            class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2"
-            href="faq.html"
-            >FAQ</a
-          >
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="index.html#contact"
-            >Contact</a
-          >
-        </div>
-        <div class="hidden lg:flex items-center gap-4">
-          <a
-            class="font-body-md text-body-md text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors"
-            href="tel:1300CARE"
-          >
-            <span class="material-symbols-outlined text-[20px]">call</span>
-            1300 CARE
-          </a>
-          <a
-            class="bg-primary text-white hover:bg-primary-container transition-colors duration-200 font-body-md text-body-md px-6 py-2 rounded-full flex items-center justify-center shadow-sm hover:shadow-md"
-            href="index.html#contact"
-          >
-            Get Started
-          </a>
-        </div>
-        <!-- Mobile Menu Toggle -->
-        <button
-          aria-label="Toggle Menu"
-          class="md:hidden text-on-surface p-2"
-          id="mobile-menu-btn"
-        >
-          <span class="material-symbols-outlined text-[28px]">menu</span>
-        </button>
-      </div>
-      <!-- Mobile Navigation Menu -->
-      <div
-        class="md:hidden hidden bg-surface border-t border-outline-variant/30 absolute w-full shadow-lg"
-        id="mobile-menu"
-      >
-        <nav class="flex flex-col px-margin-mobile py-4 gap-4">
-          <a class="font-body-md text-on-surface-variant" href="index.html">Home</a>
-          <a class="font-body-md text-on-surface-variant" href="service-agreement.html">Service Agreement</a>
-          <a class="font-body-md text-primary font-bold" href="faq.html">FAQ</a>
-          <a class="font-body-md text-on-surface-variant" href="index.html#contact">Contact</a>
-          <div
-            class="border-t border-outline-variant/30 pt-4 mt-2 flex flex-col gap-3"
-          >
-            <a
-              class="font-body-md text-on-surface-variant flex items-center gap-2"
-              href="tel:1300CARE"
-            >
-              <span class="material-symbols-outlined">call</span> 1300 CARE
-            </a>
-            <a
-              class="bg-primary text-on-primary text-center py-3 rounded-full font-body-md flex items-center justify-center"
-              href="index.html#contact"
-              >Get Started</a
-            >
-          </div>
-        </nav>
-      </div>
-    </nav>
+    <div id="site-navbar"></div>
 
     <main class="pt-[80px]">
       <!-- Hero Section -->
@@ -629,33 +541,7 @@
     </footer>
 
     <script>
-      // Simple script for mobile menu toggle
       document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.getElementById("mobile-menu-btn");
-        const menu = document.getElementById("mobile-menu");
-
-        if (btn && menu) {
-          btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            const icon = btn.querySelector(".material-symbols-outlined");
-            if (menu.classList.contains("hidden")) {
-              icon.textContent = "menu";
-            } else {
-              icon.textContent = "close";
-            }
-          });
-        }
-
-        // Close mobile menu on link click
-        const mobileLinks = menu.querySelectorAll("a");
-        mobileLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            menu.classList.add("hidden");
-            const icon = btn.querySelector(".material-symbols-outlined");
-            icon.textContent = "menu";
-          });
-        });
-
         // Intersection Observer for scroll animations
         const animationObserver = new IntersectionObserver(
           (entries) => {

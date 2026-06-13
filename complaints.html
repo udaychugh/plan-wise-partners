@@ -152,93 +152,12 @@
         },
       };
     </script>
+    <script defer src="assets/navbar.js"></script>
   </head>
   <body
     class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"
   >
-    <!-- TopNavBar -->
-    <nav
-      class="fixed w-full top-0 z-50 bg-surface/90 dark:bg-surface-container-lowest/90 border-b border-outline-variant/30 backdrop-blur-md shadow-sm transition-all duration-300"
-      id="main-header"
-    >
-      <div
-        class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"
-      >
-        <a class="flex items-center gap-2" href="index.html">
-          <img
-            alt="PlanWise Logo"
-            class="h-10 object-contain"
-            src="assets/logo.png"
-          />
-        </a>
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-6">
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="index.html#home"
-            >Home</a
-          >
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="index.html#services"
-            >Services</a
-          >
-          <a
-            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
-            href="index.html#contact"
-            >Contact</a
-          >
-        </div>
-        <div class="hidden lg:flex items-center gap-4">
-          <a
-            class="font-body-md text-body-md text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors"
-            href="tel:1300CARE"
-          >
-            <span class="material-symbols-outlined text-[20px]">call</span>
-            1300 CARE
-          </a>
-        </div>
-        <!-- Mobile Menu Toggle -->
-        <button
-          aria-label="Toggle Menu"
-          class="md:hidden text-on-surface p-2"
-          id="mobile-menu-btn"
-        >
-          <span class="material-symbols-outlined text-[28px]">menu</span>
-        </button>
-      </div>
-      <!-- Mobile Navigation Menu (Hidden by default) -->
-      <div
-        class="md:hidden hidden bg-surface border-t border-outline-variant/30 absolute w-full shadow-lg"
-        id="mobile-menu"
-      >
-        <nav class="flex flex-col px-margin-mobile py-4 gap-4">
-          <a class="font-body-md text-on-surface-variant" href="index.html#home"
-            >Home</a
-          >
-          <a
-            class="font-body-md text-on-surface-variant"
-            href="index.html#services"
-            >Services</a
-          >
-          <a
-            class="font-body-md text-on-surface-variant"
-            href="index.html#contact"
-            >Contact</a
-          >
-          <div
-            class="border-t border-outline-variant/30 pt-4 mt-2 flex flex-col gap-3"
-          >
-            <a
-              class="font-body-md text-on-surface-variant flex items-center gap-2"
-              href="tel:1300CARE"
-            >
-              <span class="material-symbols-outlined">call</span> 1300 CARE
-            </a>
-          </div>
-        </nav>
-      </div>
-    </nav>
+    <div id="site-navbar"></div>
 
     <main class="pt-[80px]">
       <!-- Complaints & Feedback Content -->
@@ -641,40 +560,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.getElementById("mobile-menu-btn");
-        const menu = document.getElementById("mobile-menu");
-        const header = document.getElementById("main-header");
-
-        if (btn && menu) {
-          btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            const icon = btn.querySelector(".material-symbols-outlined");
-            if (menu.classList.contains("hidden")) {
-              icon.textContent = "menu";
-            } else {
-              icon.textContent = "close";
-            }
-          });
-        }
-
-        const mobileLinks = menu.querySelectorAll("a");
-        mobileLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            menu.classList.add("hidden");
-            if (btn)
-              btn.querySelector(".material-symbols-outlined").textContent =
-                "menu";
-          });
-        });
-
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 10) {
-            header.classList.add("shadow-md");
-          } else {
-            header.classList.remove("shadow-md");
-          }
-        });
-
         // Form submission handler
         const complaintsForm = document.getElementById("complaints-form");
         if (complaintsForm) {
