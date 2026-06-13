@@ -38,6 +38,13 @@
           >
           <a
             class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
+            data-nav-key="switch"
+            data-nav-mode="desktop"
+            href="index.html#switch-to-us"
+            >Switch to Us</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
             data-nav-key="contact"
             data-nav-mode="desktop"
             href="index.html#contact"
@@ -97,6 +104,13 @@
             data-nav-mode="mobile"
             href="faq.html"
             >FAQ</a
+          >
+          <a
+            class="font-body-md text-on-surface-variant"
+            data-nav-key="switch"
+            data-nav-mode="mobile"
+            href="index.html#switch-to-us"
+            >Switch to Us</a
           >
           <a
             class="font-body-md text-on-surface-variant"
@@ -177,6 +191,7 @@
   function applyHrefAdjustments(container) {
     const homeHref = isIndexPage() ? "#home" : "index.html";
     const contactHref = isIndexPage() ? "#contact" : "index.html#contact";
+    const switchHref = isIndexPage() ? "#switch-to-us" : "index.html#switch-to-us";
 
     const logo = container.querySelector("[data-nav-logo]");
     if (logo) {
@@ -189,6 +204,10 @@
 
     container.querySelectorAll("[data-nav-key='contact']").forEach((link) => {
       link.setAttribute("href", contactHref);
+    });
+
+    container.querySelectorAll("[data-nav-key='switch']").forEach((link) => {
+      link.setAttribute("href", switchHref);
     });
   }
 

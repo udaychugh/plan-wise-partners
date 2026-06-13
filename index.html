@@ -154,6 +154,7 @@
       };
     </script>
     <script defer src="assets/navbar.js"></script>
+    <script defer src="assets/footer.js"></script>
     <style>
       .fade-in {
         animation: fadeIn 0.8s ease-out forwards;
@@ -203,6 +204,21 @@
         background-image: radial-gradient(#ccc3d3 1px, transparent 1px);
         background-size: 20px 20px;
         opacity: 0.5;
+      }
+
+      .parallax-panel {
+        background-image:
+          linear-gradient(135deg, rgba(27, 28, 28, 0.82), rgba(112, 72, 175, 0.7)),
+          url("assets/parallex-bg.webp");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      @media (max-width: 768px) {
+        .parallax-panel {
+          background-attachment: scroll;
+        }
       }
     </style>
   </head>
@@ -306,7 +322,7 @@
               <img
                 alt="A friendly care worker assisting an NDIS participant in a bright, modern living room."
                 class="w-full h-auto object-cover max-h-[600px]"
-                src="assets/hero-image.png"
+                src="assets/hero-image.webp"
               />
             </div>
             <!-- Floating stat card -->
@@ -390,22 +406,32 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="slide-up order-2 lg:order-1">
               <div class="grid grid-cols-2 gap-4">
-                <div
-                  class="rounded-xl overflow-hidden relative"
-                >
+                <div class="rounded-xl overflow-hidden relative">
                   <img
                     alt="Close up of hands organizing paperwork and using a calculator, representing financial management in a bright office setting."
                     class="w-full h-48 object-cover"
-                    src="assets/plan-a-image.png"
+                    src="assets/plan-a-image.webp"
                   />
                 </div>
-                <div
-                  class="rounded-xl overflow-hidden mt-8 relative"
-                >
+                <div class="rounded-xl overflow-hidden mt-8 relative">
                   <img
                     alt="A diverse group of people sitting around a table having a positive discussion, representing support network and planning."
                     class="w-full h-64 object-cover"
-                    src="assets/plan-b-image.png"
+                    src="assets/plan-b-image.webp"
+                  />
+                </div>
+                <div class="rounded-xl overflow-hidden -mt-8 relative">
+                  <img
+                    alt="A calm workspace with planning documents and supportive guidance, representing a smooth plan management transition."
+                    class="w-full h-64 object-cover"
+                    src="assets/plan-c-image.webp"
+                  />
+                </div>
+                <div class="rounded-xl overflow-hidden relative">
+                  <img
+                    alt="A supportive client conversation in a modern office, representing personal and reliable plan management."
+                    class="w-full h-48 object-cover"
+                    src="assets/plan-d-image.webp"
                   />
                 </div>
               </div>
@@ -753,7 +779,7 @@
                 <img
                   alt="Service agreement document and handshake representing professional partnership and commitment."
                   class="w-full h-auto object-cover"
-                  src="assets/consultation.png"
+                  src="assets/consultation.webp"
                 />
                 <div
                   class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8"
@@ -825,6 +851,63 @@
                 View Full Service Agreement
                 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Switch to PlanWise -->
+      <section class="py-20" id="switch-to-us">
+        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <div class="parallax-panel relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center px-6 py-14 md:px-12 md:py-20">
+              <div class="slide-up">
+                <span class="font-label-md text-label-md uppercase tracking-[0.24em] text-secondary-fixed mb-3 block">
+                  Switch with confidence
+                </span>
+                <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-6">
+                  Ready to simplify your NDIS journey?
+                </h2>
+                <p class="font-body-md text-body-md text-white/90 max-w-xl mb-8">
+                  Switch to PlanWise today and feel the difference of a plan manager that keeps things clear, responsive, and easy.
+                  It costs you nothing.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a
+                    class="inline-flex bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-container transition-colors duration-300 font-label-md text-label-md px-6 py-3 rounded-full items-center justify-center h-[48px]"
+                    href="#contact"
+                  >
+                    Start your switch
+                  </a>
+                  <a
+                    class="inline-flex bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 transition-colors duration-300 font-label-md text-label-md px-6 py-3 rounded-full items-center justify-center h-[48px]"
+                    href="service-agreement.html"
+                  >
+                    Learn more
+                  </a>
+                </div>
+              </div>
+              <div class="slide-up delay-200">
+                <div class="bg-surface-container-lowest/95 rounded-2xl p-8 md:p-10 shadow-xl border border-white/20">
+                  <span class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-3">
+                    How we help
+                  </span>
+                  <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+                      <span class="font-body-md text-body-md text-on-surface-variant">We take care of the handover from your current plan manager.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+                      <span class="font-body-md text-body-md text-on-surface-variant">We keep providers informed so your support continues smoothly.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+                      <span class="font-body-md text-body-md text-on-surface-variant">We make the switch simple, personal, and stress-free.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
