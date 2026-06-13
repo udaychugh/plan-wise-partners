@@ -1,0 +1,820 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Service Agreement - PlanWise NDIS Plan Management</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#4c6f00",
+              "surface-dim": "#dcd9d9",
+              "primary-fixed-dim": "#d6baff",
+              "surface-container-lowest": "#ffffff",
+              surface: "#fcf9f8",
+              tertiary: "#26252d",
+              "on-tertiary-container": "#a8a5ae",
+              error: "#ba1a1a",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed-variant": "#354e00",
+              "tertiary-fixed": "#e5e1eb",
+              "on-primary-fixed": "#280056",
+              "on-primary-container": "#bc92fe",
+              "surface-tint": "#7148af",
+              primary: "#360071",
+              "inverse-primary": "#d6baff",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#3c3b43",
+              "on-background": "#1b1c1c",
+              "secondary-fixed-dim": "#9dd82c",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#582e96",
+              "primary-container": "#4d218a",
+              "on-surface-variant": "#4a4451",
+              background: "#fcf9f8",
+              "surface-container-high": "#eae7e7",
+              "tertiary-fixed-dim": "#c8c5ce",
+              "on-tertiary-fixed-variant": "#47464e",
+              "on-error": "#ffffff",
+              outline: "#7b7483",
+              "surface-container-low": "#f6f3f2",
+              "on-primary": "#ffffff",
+              "surface-bright": "#fcf9f8",
+              "surface-variant": "#e4e2e1",
+              "inverse-surface": "#303030",
+              "secondary-container": "#b8f649",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#131f00",
+              "on-tertiary-fixed": "#1b1b22",
+              "outline-variant": "#ccc3d3",
+              "surface-container-highest": "#e4e2e1",
+              secondary: "#476800",
+              "on-surface": "#1b1c1c",
+              "primary-fixed": "#ecdcff",
+              "secondary-fixed": "#b8f649",
+              "inverse-on-surface": "#f3f0f0",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              base: "8px",
+              md: "24px",
+              sm: "12px",
+              "max-width": "1200px",
+              lg: "48px",
+              "margin-mobile": "16px",
+              "margin-desktop": "auto",
+              xs: "4px",
+              gutter: "24px",
+              xl: "80px",
+            },
+            fontFamily: {
+              "headline-lg": ["Atkinson Hyperlegible Next"],
+              "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
+              "body-lg": ["Atkinson Hyperlegible Next"],
+              "body-md": ["Atkinson Hyperlegible Next"],
+              "label-md": ["Atkinson Hyperlegible Next"],
+              "label-sm": ["Atkinson Hyperlegible Next"],
+              "headline-md": ["Atkinson Hyperlegible Next"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": [
+                "20px",
+                {
+                  lineHeight: "1.6",
+                  fontWeight: "400",
+                },
+              ],
+              "body-md": [
+                "18px",
+                {
+                  lineHeight: "1.6",
+                  fontWeight: "400",
+                },
+              ],
+              "label-md": [
+                "16px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-sm": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-md": [
+                "28px",
+                {
+                  lineHeight: "1.3",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+        opacity: 0;
+      }
+      .slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed w-full top-0 z-50 bg-surface/90 dark:bg-surface-container-lowest/90 border-b border-outline-variant/30 backdrop-blur-md shadow-sm transition-all duration-300"
+      id="main-header"
+    >
+      <div
+        class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"
+      >
+        <a class="flex items-center gap-2" href="index.html">
+          <img
+            alt="PlanWise Logo"
+            class="h-10 object-contain"
+            src="assets/logo.png"
+          />
+        </a>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-6">
+          <a
+            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2"
+            href="service-agreement.html"
+            >Service Agreement</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
+            href="faq.html"
+            >FAQ</a
+          >
+          <a
+            class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-200 px-2 py-1"
+            href="index.html#contact"
+            >Contact</a
+          >
+        </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a
+            class="font-body-md text-body-md text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors"
+            href="tel:1300CARE"
+          >
+            <span class="material-symbols-outlined text-[20px]">call</span>
+            1300 CARE
+          </a>
+          <a
+            class="bg-primary text-white hover:bg-primary-container transition-colors duration-200 font-body-md text-body-md px-6 py-2 rounded-full flex items-center justify-center shadow-sm hover:shadow-md"
+            href="index.html#contact"
+          >
+            Get Started
+          </a>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button
+          aria-label="Toggle Menu"
+          class="md:hidden text-on-surface p-2"
+          id="mobile-menu-btn"
+        >
+          <span class="material-symbols-outlined text-[28px]">menu</span>
+        </button>
+      </div>
+      <!-- Mobile Navigation Menu -->
+      <div
+        class="md:hidden hidden bg-surface border-t border-outline-variant/30 absolute w-full shadow-lg"
+        id="mobile-menu"
+      >
+        <nav class="flex flex-col px-margin-mobile py-4 gap-4">
+          <a class="font-body-md text-on-surface-variant" href="index.html">Home</a>
+          <a class="font-body-md text-primary font-bold" href="service-agreement.html">Service Agreement</a>
+          <a class="font-body-md text-on-surface-variant" href="faq.html">FAQ</a>
+          <a class="font-body-md text-on-surface-variant" href="index.html#contact">Contact</a>
+          <div
+            class="border-t border-outline-variant/30 pt-4 mt-2 flex flex-col gap-3"
+          >
+            <a
+              class="font-body-md text-on-surface-variant flex items-center gap-2"
+              href="tel:1300CARE"
+            >
+              <span class="material-symbols-outlined">call</span> 1300 CARE
+            </a>
+            <a
+              class="bg-primary text-on-primary text-center py-3 rounded-full font-body-md flex items-center justify-center"
+              href="index.html#contact"
+              >Get Started</a
+            >
+          </div>
+        </nav>
+      </div>
+    </nav>
+
+    <main class="pt-[80px]">
+      <!-- Hero Section -->
+      <section
+        class="relative overflow-hidden bg-gradient-to-br from-surface to-primary-fixed/30 py-12 md:py-24"
+        id="hero"
+      >
+        <div
+          class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10"
+        >
+          <div class="slide-up z-20">
+            <div
+              class="inline-flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full mb-6"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-[20px] shadow-sm"
+                >description</span
+              >
+              <span class="font-label-sm text-label-sm text-primary font-bold"
+                >Our Commitment to You</span
+              >
+            </div>
+            <h1
+              class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-6 leading-tight text-balance"
+            >
+              Service Agreement
+            </h1>
+            <p
+              class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8 text-pretty"
+            >
+              A clear outline of how we work together, our responsibilities, your rights, and our commitment to professional service excellence.
+            </p>
+            <a
+              class="inline-flex bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full items-center justify-center shadow-md hover:shadow-lg h-[56px] gap-2"
+              href="#agreement-content"
+            >
+              View Agreement
+              <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service Agreement Content -->
+      <section class="py-20 bg-surface" id="agreement-content">
+        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <div class="space-y-12 slide-up">
+            <!-- Section 1: Our Services -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[28px]">workspace_premium</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">1. Our Services</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      PlanWise provides NDIS Plan Management services to help you manage the financial and administrative aspects of your NDIS funding. Our services include:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Receiving and processing invoices from your providers</li>
+                      <li>Verifying invoices against NDIS pricing guidelines and your plan</li>
+                      <li>Making payments to your providers on a timely basis</li>
+                      <li>Tracking your spending against your approved budget categories</li>
+                      <li>Providing you with regular reports and financial summaries</li>
+                      <li>Managing your budget allocation and fund planning</li>
+                      <li>Offering dedicated support and plan management advice</li>
+                      <li>Assisting with administrative queries and documentation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Your Responsibilities -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">assignment</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">2. Your Responsibilities</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      To ensure we can provide you with the best service, we ask that you:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Provide complete and accurate information about your NDIS plan</li>
+                      <li>Inform us promptly of any changes to your plan, providers, or contact details</li>
+                      <li>Ensure your providers submit invoices with accurate information</li>
+                      <li>Respond to our requests for information in a timely manner</li>
+                      <li>Review your financial reports and notify us of any discrepancies</li>
+                      <li>Maintain communication with us regarding your plan and support needs</li>
+                      <li>Provide timely authorisation for invoice payments</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Payment and Invoicing -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[24px]">payment</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">3. Payment and Invoicing Process</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      <strong>Invoice Processing Timeline:</strong>
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>We aim to process invoices within 1-2 business days of receipt</li>
+                      <li>Payments are typically made within 24-48 hours of invoice approval</li>
+                      <li>We may request clarification or documentation before payment</li>
+                      <li>All invoices are checked against NDIS pricing guidelines</li>
+                    </ul>
+                    <p class="mt-4">
+                      <strong>Payment Methods:</strong> We will arrange payments through secure bank transfers or alternative methods as agreed upon with your provider.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 4: Budget Management -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">monitoring</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">4. Budget Management</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      We commit to:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Maintaining accurate records of all invoices and payments</li>
+                      <li>Tracking spending against your approved budget categories</li>
+                      <li>Alerting you when spending approaches budget limits</li>
+                      <li>Providing regular budget reports and financial summaries</li>
+                      <li>Assisting with budget planning to maximise outcomes for you</li>
+                      <li>Ensuring all payments comply with NDIS funding rules and your plan</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 5: Privacy and Confidentiality -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[24px]">lock</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">5. Privacy and Confidentiality</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      We take your privacy seriously and are committed to:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Keeping all your personal and financial information confidential</li>
+                      <li>Only using your information for the purpose of providing plan management services</li>
+                      <li>Complying with Australian Privacy Principles</li>
+                      <li>Protecting your information with secure systems and practices</li>
+                      <li>Not sharing your information with third parties without your consent (except as required by law)</li>
+                      <li>Providing you with access to your own information upon request</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 6: NDIS Compliance -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">6. NDIS Compliance</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      As a registered NDIS provider, we are committed to:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Complying with all NDIS legislation and guidelines</li>
+                      <li>Adhering to the NDIS Code of Conduct</li>
+                      <li>Following NDIS pricing guidelines and payment requirements</li>
+                      <li>Maintaining appropriate records and documentation</li>
+                      <li>Reporting accurately to the NDIS</li>
+                      <li>Cooperating with NDIS audits and compliance reviews</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 7: Communication -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[24px]">chat</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">7. How We Communicate</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      We are committed to keeping you informed:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Your dedicated plan manager is available by phone during business hours</li>
+                      <li>We provide regular updates via email, phone, or your preferred method</li>
+                      <li>You can access your account dashboard online for real-time information</li>
+                      <li>We respond to inquiries within 2-3 business days</li>
+                      <li>You can contact us by phone at 1300 CARE (1300 2273)</li>
+                      <li>You can email us at hello@planwise.com.au</li>
+                      <li>For urgent matters, please call our phone line for immediate assistance</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 8: Fees -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">currency_exchange</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">8. Service Fees</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      <strong>No out-of-pocket costs:</strong> There are no fees payable by you directly. The NDIS provides separate funding for plan management services in your 'Improved Life Choices' budget category.
+                    </p>
+                    <p>
+                      <strong>Fee structure:</strong> Our fees are determined by the NDIS and are paid directly from your plan management funding. There are no hidden charges or surprise costs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 9: Conflict Resolution -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[28px]">diversity_3</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">9. Dispute Resolution</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      If you have any concerns or complaints about our service:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>Please contact your plan manager to discuss the issue</li>
+                      <li>We will investigate the matter thoroughly and aim to resolve it within 5 business days</li>
+                      <li>If unresolved, you can lodge a formal complaint in writing</li>
+                      <li>You can also contact the NDIS Quality and Safeguards Commission</li>
+                      <li>We also have a formal complaints process - see our Complaints & Feedback page for more details</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 10: Termination -->
+            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">logout</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">10. Termination of Services</h2>
+                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <p>
+                      You have the right to change your plan manager at any time:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>You can terminate this agreement by notifying us in writing</li>
+                      <li>We will assist with a smooth transition to your new plan manager</li>
+                      <li>We will provide all necessary documentation and information about your account</li>
+                      <li>We may terminate services if you breach this agreement or NDIS requirements</li>
+                      <li>We will provide reasonable notice before terminating services</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 11: Your Rights -->
+            <div class="bg-primary/10 rounded-xl p-8 border border-primary/20 shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[24px]">shield</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">11. Your Rights as a Participant</h2>
+                  <div class="space-y-4 font-body-md text-on-surface">
+                    <ul class="list-disc pl-6 space-y-2">
+                      <li>The right to choose your plan manager</li>
+                      <li>The right to be treated with respect and dignity</li>
+                      <li>The right to access your own information</li>
+                      <li>The right to have your financial information kept confidential</li>
+                      <li>The right to receive regular updates and reports</li>
+                      <li>The right to ask questions about your plan and services</li>
+                      <li>The right to complain if you're not satisfied with our service</li>
+                      <li>The right to change plan managers</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 12: Getting Started -->
+            <div class="bg-secondary-fixed/10 rounded-xl p-8 border border-secondary-fixed/20 shadow-sm">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-secondary text-[24px]">rocket_launch</span>
+                </div>
+                <div class="flex-grow">
+                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">Getting Started with PlanWise</h2>
+                  <div class="space-y-4 font-body-md text-on-surface">
+                    <p>
+                      To begin your plan management journey with us, simply:
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                      <li>Contact us through our website, phone, or email</li>
+                      <li>Speak with one of our friendly team members</li>
+                      <li>Provide your NDIS plan details and information about your current providers</li>
+                      <li>Review and sign this Service Agreement</li>
+                      <li>Set up your account and access our online dashboard</li>
+                      <li>Start receiving expert plan management support</li>
+                    </ol>
+                    <p class="mt-4">
+                      By signing this agreement, you confirm that you have read and understood our Service Agreement and agree to these terms and conditions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="mt-16 bg-gradient-to-r from-primary/5 to-secondary-fixed/5 rounded-xl p-8 border border-primary/20 text-center slide-up delay-100">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Ready to Start Your Journey?</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-2xl mx-auto">
+              Now that you understand how we work, let's get started. Contact our team today to discuss your NDIS plan management needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full flex items-center justify-center shadow-md hover:shadow-lg h-[56px]"
+                href="index.html#contact"
+              >
+                Get Started Today
+              </a>
+              <a
+                class="bg-transparent border-2 border-secondary text-on-surface hover:bg-secondary-fixed/50 transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full flex items-center justify-center h-[56px]"
+                href="tel:1300CARE"
+              >
+                Call 1300 CARE
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tertiary dark:bg-tertiary-container w-full pt-xl pb-md">
+      <div
+        class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8"
+      >
+        <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+          <span
+            class="font-headline-md text-headline-md font-bold text-on-tertiary"
+            >PlanWise</span
+          >
+          <p
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 mt-2 text-sm"
+          >
+            Empowering NDIS participants with transparent, stress-free plan
+            management and dedicated support across Australia.
+          </p>
+        </div>
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4
+            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
+          >
+            Quick Links
+          </h4>
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="index.html#home"
+            >Home</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="index.html#about"
+            >About Us</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="index.html#services"
+            >Services</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="index.html#contact"
+            >Contact</a
+          >
+        </div>
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4
+            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
+          >
+            Resources
+          </h4>
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="index.html#faq"
+            >FAQ</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-secondary-fixed dark:text-secondary-fixed font-bold"
+            href="service-agreement.html"
+            >Service Agreement</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="privacy-policy.html"
+            >Privacy Policy</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="terms-of-service.html"
+            >Terms of Service</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="ndis-code-of-conduct.html"
+            >NDIS Code of Conduct</a
+          >
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="complaints.html"
+            >Complaints &amp; Feedback</a
+          >
+        </div>
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4
+            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
+          >
+            Contact Us
+          </h4>
+          <p
+            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined text-[18px]">call</span> 1300
+            CARE
+          </p>
+          <p
+            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined text-[18px]">mail</span>
+            hello@planwise.com.au
+          </p>
+          <p
+            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-start gap-2"
+          >
+            <span class="material-symbols-outlined text-[18px] mt-1"
+              >location_on</span
+            >
+            Level 1, 123 Support St,<br />Melbourne VIC 3000
+          </p>
+        </div>
+      </div>
+      <div
+        class="px-margin-desktop max-w-[1440px] mx-auto border-t border-on-tertiary/20 pt-6 mt-6"
+      >
+        <div
+          class="bg-tertiary-container/50 p-4 rounded-lg mb-6 border border-on-tertiary/10"
+        >
+          <p
+            class="font-label-sm text-label-sm text-on-tertiary/80 text-center italic"
+          >
+            <strong>NDIS Acknowledgement:</strong> PlanWise acknowledges the
+            Traditional Custodians of country throughout Australia and their
+            connections to land, sea and community. We pay our respect to their
+            Elders past and present and extend that respect to all Aboriginal
+            and Torres Strait Islander peoples today.
+          </p>
+        </div>
+        <p class="font-label-sm text-label-sm text-on-tertiary/80 text-center">
+          © 2024 PlanWise NDIS Plan Management. Registered NDIS Provider.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Simple script for mobile menu toggle
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
+        if (btn && menu) {
+          btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            const icon = btn.querySelector(".material-symbols-outlined");
+            if (menu.classList.contains("hidden")) {
+              icon.textContent = "menu";
+            } else {
+              icon.textContent = "close";
+            }
+          });
+        }
+
+        // Close mobile menu on link click
+        const mobileLinks = menu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            const icon = btn.querySelector(".material-symbols-outlined");
+            icon.textContent = "menu";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
