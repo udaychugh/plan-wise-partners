@@ -15,6 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -190,23 +191,87 @@
       html {
         scroll-behavior: smooth;
       }
+
+      /* Form validation error styling */
+      .border-error {
+        border-color: #ba1a1a !important;
+        border-style: solid !important;
+      }
+      .text-error {
+        color: #ba1a1a !important;
+      }
+
+      /* Print Override Styles */
+      @media print {
+        body {
+          background-color: white !important;
+          color: black !important;
+          font-size: 11pt !important;
+        }
+        #site-navbar, footer, #hero, #success-view, .no-print, button, [onclick] {
+          display: none !important;
+        }
+        main {
+          padding-top: 0 !important;
+        }
+        #agreement-content {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+          background-color: white !important;
+        }
+        #document-paper-container {
+          display: block !important;
+        }
+        #document-paper {
+          box-shadow: none !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          background-color: white !important;
+        }
+        /* Style form inputs nicely for print */
+        input[type="text"] {
+          border-bottom: 1px solid #000 !important;
+          border-top: none !important;
+          border-left: none !important;
+          border-right: none !important;
+          border-radius: 0 !important;
+          background-color: transparent !important;
+          box-shadow: none !important;
+          padding: 1px 4px !important;
+        }
+        /* Keep checkboxes printed */
+        input[type="checkbox"] {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          border: 1px solid #000 !important;
+        }
+        #dropzone, #uploaded-files-container, #clear-signature {
+          display: none !important;
+        }
+        canvas {
+          border: 1px solid #000 !important;
+        }
+      }
     </style>
   </head>
   <body
     class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"
   >
-    <div id="site-navbar"></div>
+    <div id="site-navbar" class="no-print"></div>
 
     <main class="pt-[80px]">
       <!-- Hero Section -->
       <section
-        class="relative overflow-hidden bg-gradient-to-br from-surface to-primary-fixed/30 py-12 md:py-24"
+        class="relative overflow-hidden bg-gradient-to-br from-surface to-primary-fixed/30 py-12 md:py-16 no-print"
         id="hero"
       >
         <div
           class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10"
         >
-          <div class="slide-up z-20">
+          <div class="slide-up z-20 text-center md:text-left">
             <div
               class="inline-flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full mb-6"
             >
@@ -215,490 +280,1321 @@
                 >description</span
               >
               <span class="font-label-sm text-label-sm text-primary font-bold"
-                >Our Commitment to You</span
+                >Secure Digital Form</span
               >
             </div>
             <h1
-              class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-6 leading-tight text-balance"
+              class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-4 leading-tight text-balance"
             >
               Service Agreement
             </h1>
             <p
-              class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8 text-pretty"
+              class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-0 text-pretty"
             >
-              A clear outline of how we work together, our responsibilities, your rights, and our commitment to professional service excellence.
+              Please fill out and sign the NDIS Plan Management Service Agreement document below to begin your services.
             </p>
-            <a
-              class="inline-flex bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full items-center justify-center shadow-md hover:shadow-lg h-[56px] gap-2"
-              href="#agreement-content"
-            >
-              View Agreement
-              <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-            </a>
           </div>
         </div>
       </section>
 
       <!-- Service Agreement Content -->
-      <section class="py-20 bg-surface" id="agreement-content">
+      <section class="py-12 bg-surface" id="agreement-content">
         <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-          <div class="space-y-12 slide-up">
-            <!-- Section 1: Our Services -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[28px]">workspace_premium</span>
+          
+          <!-- Document Form View -->
+          <div id="document-paper-container" class="slide-up">
+            <form id="agreement-form" class="space-y-8" novalidate onsubmit="event.preventDefault();">
+              <div class="bg-white text-gray-900 shadow-xl rounded-2xl border border-surface-variant p-6 sm:p-12 md:p-16 max-w-4xl mx-auto relative" id="document-paper">
+                
+                <!-- Document Reference ID -->
+                <div class="text-right text-xs font-mono text-gray-600 mb-4" id="doc-ref-header">
+                  Agreement Reference ID: <span id="header-ref-id" class="font-bold text-primary"></span>
                 </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">1. Our Services</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      PlanWise provides NDIS Plan Management services to help you manage the financial and administrative aspects of your NDIS funding. Our services include:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Receiving and processing invoices from your providers</li>
-                      <li>Verifying invoices against NDIS pricing guidelines and your plan</li>
-                      <li>Making payments to your providers on a timely basis</li>
-                      <li>Tracking your spending against your approved budget categories</li>
-                      <li>Providing you with regular reports and financial summaries</li>
-                      <li>Managing your budget allocation and fund planning</li>
-                      <li>Offering dedicated support and plan management advice</li>
-                      <li>Assisting with administrative queries and documentation</li>
+                
+                <!-- Paper Header -->
+                <div class="text-center mb-8 border-b-2 border-primary/20 pb-8">
+                  <div class="flex items-center justify-center gap-3.5 mb-4">
+                    <img src="assets/lg-logo.png" alt="LG Community logo" class="h-12 sm:h-14 w-auto object-contain">
+                    <h2 class="text-base sm:text-lg font-bold tracking-wider text-primary uppercase text-left leading-tight">
+                      LG Community<br>Partners Pvt Ltd
+                    </h2>
+                  </div>
+                  <h1 class="text-2xl sm:text-3xl font-extrabold text-on-background mt-2 tracking-tight uppercase">NDIS Plan Management Service Agreement</h1>
+                  <p class="text-sm font-semibold text-on-surface-variant/80 mt-1 italic">(Registration Group 0127 – Plan Management Services)</p>
+                </div>
+
+                <!-- 1. Parties to this Agreement -->
+                <div class="mb-10">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2 mb-6">1. Parties to this Agreement</h3>
+                  <p class="text-sm text-on-surface-variant mb-6">This Service Agreement is made between:</p>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Side: Provider Details -->
+                    <div class="bg-surface-container-low/50 p-6 rounded-xl border border-surface-variant/30 space-y-4">
+                      <h4 class="font-bold text-sm text-primary border-b border-primary/10 pb-2">Provider</h4>
+                      <div class="space-y-3 text-sm text-on-surface-variant">
+                        <div>
+                          <span class="block font-bold text-xs uppercase tracking-wider text-on-surface/60">Business Name</span>
+                          <span class="font-semibold text-on-surface text-base">LG Community Partners</span>
+                        </div>
+                        <div>
+                          <span class="block font-bold text-xs uppercase tracking-wider text-on-surface/60">ABN</span>
+                          <span class="font-semibold text-on-surface">68 655 766 448</span>
+                        </div>
+                        <div>
+                          <span class="block font-bold text-xs uppercase tracking-wider text-on-surface/60">Address</span>
+                          <span class="font-semibold text-on-surface">8 White Cedar Drive, Castle Hill NSW 2154</span>
+                        </div>
+                        <div>
+                          <span class="block font-bold text-xs uppercase tracking-wider text-on-surface/60">Email</span>
+                          <span class="font-semibold text-on-surface">admin@lgpartners.com.au</span>
+                        </div>
+                        <div>
+                          <span class="block font-bold text-xs uppercase tracking-wider text-on-surface/60">Phone</span>
+                          <span class="font-semibold text-on-surface">0498475578</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Right Side: Participant Details -->
+                    <div class="space-y-6">
+                      <h4 class="font-bold text-sm text-primary border-b border-primary/10 pb-2">Participant</h4>
+                      
+                      <!-- Participant Name -->
+                      <div class="relative">
+                        <label for="participant-name" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Participant Full Name <span class="text-error font-bold">*</span></label>
+                        <input type="text" id="participant-name" name="participantName" required
+                          class="w-full bg-transparent border-b-2 border-dashed border-gray-300 focus:border-primary focus:ring-0 px-2 py-1.5 transition-all outline-none text-base font-semibold"
+                          placeholder="Enter participant's full name">
+                        <p id="error-participant-name" class="text-error text-xs hidden mt-1 flex items-center gap-1">
+                          <span class="material-symbols-outlined text-sm">error</span> Please enter the participant's full name.
+                        </p>
+                      </div>
+
+                      <!-- NDIS Number -->
+                      <div class="relative">
+                        <label for="ndis-number" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">NDIS Number <span class="text-error font-bold">*</span></label>
+                        <input type="text" id="ndis-number" name="ndisNumber" required pattern="[0-9]{9}"
+                          class="w-full bg-transparent border-b-2 border-dashed border-gray-300 focus:border-primary focus:ring-0 px-2 py-1.5 transition-all outline-none text-base font-semibold"
+                          placeholder="Enter 9-digit NDIS number">
+                        <p id="error-ndis-number" class="text-error text-xs hidden mt-1 flex items-center gap-1">
+                          <span class="material-symbols-outlined text-sm">error</span> Please enter a valid 9-digit NDIS number.
+                        </p>
+                      </div>
+
+                      <!-- Participant Address -->
+                      <div class="relative">
+                        <label for="participant-address" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Participant Address <span class="text-error font-bold">*</span></label>
+                        <input type="text" id="participant-address" name="participantAddress" required
+                          class="w-full bg-transparent border-b-2 border-dashed border-gray-300 focus:border-primary focus:ring-0 px-2 py-1.5 transition-all outline-none text-base font-semibold"
+                          placeholder="Enter physical address">
+                        <p id="error-participant-address" class="text-error text-xs hidden mt-1 flex items-center gap-1">
+                          <span class="material-symbols-outlined text-sm">error</span> Please enter the participant's address.
+                        </p>
+                      </div>
+
+                      <!-- Nominee Name -->
+                      <div class="relative pt-2">
+                        <label for="nominee-name" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Nominee / Plan Nominee <span class="text-on-surface-variant/60 font-normal">(if applicable)</span></label>
+                        <input type="text" id="nominee-name" name="nomineeName"
+                          class="w-full bg-transparent border-b-2 border-dashed border-gray-300 focus:border-primary focus:ring-0 px-2 py-1.5 transition-all outline-none text-base font-semibold"
+                          placeholder="Enter nominee name if applicable">
+                      </div>
+                    </div>
+                  </div>
+                </div>                <!-- 2. Purpose of This Agreement -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">2. Purpose of This Agreement</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    This agreement outlines the Plan Management services provided by us to assist you in managing your NDIS funding.
+                  </p>
+                  <p class="text-sm text-on-surface font-semibold pt-1">We act as your financial intermediary to:</p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Pay providers on your behalf</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Monitor your NDIS budget</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Provide regular financial statements</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Ensure invoices are processed correctly under NDIS rules</span>
+                    </li>
+                  </ul>
+                  <p class="text-sm text-on-surface font-semibold italic pt-2">
+                    We do not provide disability supports directly.
+                  </p>
+                </div>
+
+                <!-- 3. Services We Will Provide -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">3. Services We Will Provide</h3>
+                  <p class="text-sm text-on-surface font-semibold">We will:</p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Receive and process invoices from your support providers</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Check invoices for NDIS compliance before payment</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Pay approved invoices using your NDIS plan funds</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Monitor your budget and spending</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Provide monthly (or agreed frequency) statements</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Assist with queries relating to budget and funding</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Liaise with providers regarding invoice issues</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 4. Your Responsibilities (Participant) -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">4. Your Responsibilities (Participant)</h3>
+                  <p class="text-sm text-on-surface font-semibold">You agree to:</p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Provide accurate details of your NDIS plan</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Ensure providers send invoices directly to us</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Inform us of any changes in your plan or supports</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Check your monthly statements and notify us of concerns</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Ensure supports claimed are delivered as agreed with providers</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 5. Our Responsibilities (Provider) -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">5. Our Responsibilities (Provider)</h3>
+                  <p class="text-sm text-on-surface font-semibold">We agree to:</p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Manage your NDIS funds in accordance with NDIS rules</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Process invoices in a timely and accurate manner</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Maintain confidentiality of your personal and financial information</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Keep accurate financial records</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Provide clear budget reporting</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Act in your best interests at all times</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 6. Fees for Service -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">6. Fees for Service</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Plan management services are funded directly by the NDIS under your plan.
+                  </p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>You will not be charged directly for plan management services</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>We claim fees directly from your NDIS plan in line with the current NDIS Pricing Arrangements</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 7. Invoicing Process -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">7. Invoicing Process</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    Providers must send invoices to:
+                  </p>
+                  <div class="bg-surface-container-low border border-surface-variant/30 p-3 rounded-lg text-sm font-semibold text-primary max-w-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">email</span>
+                    <span>admin@lgpartners.com.au</span>
+                  </div>
+                  
+                  <div class="space-y-2 pt-2">
+                    <p class="text-sm text-on-surface font-semibold">Invoices must include:</p>
+                    <ul class="list-none space-y-1.5 text-sm text-on-surface-variant pl-2">
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Participant name and NDIS number</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Service details and dates</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Correct NDIS line item</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Provider ABN</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="space-y-2 pt-2 border-t border-gray-200 mt-3">
+                    <p class="text-sm text-on-surface font-semibold">We will:</p>
+                    <ul class="list-none space-y-1.5 text-sm text-on-surface-variant pl-2">
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Verify invoices against your plan</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Process payment if compliant</span>
+                      </li>
+                      <li class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                        <span>Contact providers if clarification is needed</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Section 2: Your Responsibilities -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">assignment</span>
+                <!-- 8. Privacy & Confidentiality -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">8. Privacy & Confidentiality</h3>
+                  <p class="text-sm text-on-surface font-semibold">We will:</p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Protect your personal and financial information</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Store data securely</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                      <span>Only share information with your consent or when required by law</span>
+                    </li>
+                  </ul>
+                  <p class="text-sm text-on-surface-variant leading-relaxed pt-1">
+                    Your information will be handled in accordance with the Privacy Act 1988 (Cth).
+                  </p>
                 </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">2. Your Responsibilities</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      To ensure we can provide you with the best service, we ask that you:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Provide complete and accurate information about your NDIS plan</li>
-                      <li>Inform us promptly of any changes to your plan, providers, or contact details</li>
-                      <li>Ensure your providers submit invoices with accurate information</li>
-                      <li>Respond to our requests for information in a timely manner</li>
-                      <li>Review your financial reports and notify us of any discrepancies</li>
-                      <li>Maintain communication with us regarding your plan and support needs</li>
-                      <li>Provide timely authorisation for invoice payments</li>
+
+                <!-- 9. Complaints -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">9. Complaints</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    If you are unhappy with our services, you can contact us:
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
+                    <div class="bg-surface-container-low border border-surface-variant/30 p-3 rounded-lg text-sm font-semibold text-primary flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[20px]">email</span>
+                      <span>contact@lgpartners.com.au</span>
+                    </div>
+                    <div class="bg-surface-container-low border border-surface-variant/30 p-3 rounded-lg text-sm font-semibold text-primary flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[20px]">call</span>
+                      <span>0498475578</span>
+                    </div>
+                  </div>
+                  
+                  <div class="space-y-2 pt-2">
+                    <p class="text-sm text-on-surface font-semibold">We will:</p>
+                    <ul class="list-none space-y-1.5 text-sm text-on-surface-variant pl-2">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Acknowledge complaints within [2–5 business days]</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Investigate and respond promptly</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Maintain a complaints register</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <p class="text-sm text-on-surface-variant leading-relaxed pt-1">
+                    You may also contact the NDIS Quality and Safeguards Commission if needed.
+                  </p>
+                </div>
+
+                <!-- 10. Incident Management -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">10. Incident Management</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    We will manage and document any incidents related to:
+                  </p>
+                  <ul class="list-none space-y-2 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>Financial errors</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>Invoice disputes</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>Data breaches</span>
+                    </li>
+                  </ul>
+                  <p class="text-sm text-on-surface-variant leading-relaxed pt-1">
+                    Serious matters will be escalated in line with NDIS requirements.
+                  </p>
+                </div>
+
+                <!-- 11. Termination of Agreement -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">11. Termination of Agreement</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    This agreement can be ended by either party with 14 days written notice.
+                  </p>
+                  <div class="text-sm text-on-surface-variant leading-relaxed space-y-3">
+                    <p class="font-semibold text-on-surface">We may terminate immediately if:</p>
+                    <ul class="list-none space-y-1.5 pl-2">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Required by law</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>There is misuse of services or fraudulent activity</span>
+                      </li>
+                    </ul>
+                    <p class="font-semibold text-on-surface pt-2">Upon termination, we will:</p>
+                    <ul class="list-none space-y-1.5 pl-2">
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Provide final statements</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        <span>Transfer relevant information securely if required</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Section 3: Payment and Invoicing -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[24px]">payment</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">3. Payment and Invoicing Process</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      <strong>Invoice Processing Timeline:</strong>
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>We aim to process invoices within 1-2 business days of receipt</li>
-                      <li>Payments are typically made within 24-48 hours of invoice approval</li>
-                      <li>We may request clarification or documentation before payment</li>
-                      <li>All invoices are checked against NDIS pricing guidelines</li>
-                    </ul>
-                    <p class="mt-4">
-                      <strong>Payment Methods:</strong> We will arrange payments through secure bank transfers or alternative methods as agreed upon with your provider.
-                    </p>
+                <!-- 12. Communication -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">12. Communication</h3>
+                  <p class="text-sm text-on-surface-variant">Preferred method of communication:</p>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-1">
+                    <label class="flex items-center gap-3 cursor-pointer select-none">
+                      <input type="checkbox" name="comm_pref" value="Email" class="rounded text-primary focus:ring-primary border-gray-300 w-5 h-5">
+                      <span class="text-sm text-on-surface-variant font-medium">Email</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer select-none">
+                      <input type="checkbox" name="comm_pref" value="Phone" class="rounded text-primary focus:ring-primary border-gray-300 w-5 h-5">
+                      <span class="text-sm text-on-surface-variant font-medium">Phone</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer select-none">
+                      <input type="checkbox" name="comm_pref" value="SMS" class="rounded text-primary focus:ring-primary border-gray-300 w-5 h-5">
+                      <span class="text-sm text-on-surface-variant font-medium">SMS</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer select-none" id="label-comm-other">
+                      <input type="checkbox" id="comm-pref-other" name="comm_pref" value="Other" class="rounded text-primary focus:ring-primary border-gray-300 w-5 h-5" onchange="toggleCommOtherInput(this)">
+                      <span class="text-sm text-on-surface-variant font-medium">Other</span>
+                    </label>
+                  </div>
+                  <div id="comm-other-container" class="hidden relative mt-2 max-w-md">
+                    <input type="text" id="comm-other-text" name="commOtherText"
+                      class="w-full bg-transparent border-b-2 border-dashed border-gray-300 focus:border-primary focus:ring-0 px-2 py-1 transition-all outline-none text-sm font-semibold"
+                      placeholder="Please specify other communication method">
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Section 4: Budget Management -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">monitoring</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">4. Budget Management</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      We commit to:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Maintaining accurate records of all invoices and payments</li>
-                      <li>Tracking spending against your approved budget categories</li>
-                      <li>Alerting you when spending approaches budget limits</li>
-                      <li>Providing regular budget reports and financial summaries</li>
-                      <li>Assisting with budget planning to maximise outcomes for you</li>
-                      <li>Ensuring all payments comply with NDIS funding rules and your plan</li>
-                    </ul>
+                <!-- 13. Upload Document -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">13. Upload Document <span class="text-xs font-normal text-on-surface-variant/80 normal-case">(Upload all related documents)</span></h3>
+                  <div id="dropzone" class="border-2 border-dashed border-gray-300 hover:border-primary bg-surface-container-low/30 rounded-xl p-8 transition-colors text-center cursor-pointer relative" onclick="triggerFileInput()">
+                    <input type="file" id="budget-files" name="budgetFiles" class="hidden" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onchange="handleFileSelection(event)">
+                    <span class="material-symbols-outlined text-[48px] text-primary mb-3">cloud_upload</span>
+                    <p class="text-sm font-bold text-on-surface mb-1">Drag and drop your NDIS budget documents here</p>
+                    <p class="text-xs text-on-surface-variant">or <span class="text-primary hover:underline font-semibold">browse files</span> from your computer</p>
+                    <p class="text-[11px] text-on-surface-variant/75 mt-2">Supports PDF, DOCX, PNG, JPG (Max 10MB per file)</p>
+                  </div>
+                  
+                  <!-- Uploaded files list -->
+                  <div id="uploaded-files-container" class="hidden space-y-2 mt-3">
+                    <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Uploaded Documents:</p>
+                    <div id="uploaded-files-list" class="space-y-2">
+                      <!-- Dynamically filled -->
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Section 5: Privacy and Confidentiality -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[24px]">lock</span>
+                <!-- 14. Agreement Review -->
+                <div class="mb-10 space-y-3">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">14. Agreement Review</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">
+                    This agreement will be reviewed:
+                  </p>
+                  <ul class="list-none space-y-1.5 text-sm text-on-surface-variant pl-2">
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>Every 12 months, OR</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>When your NDIS plan changes, OR</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+                      <span>When requested by either party</span>
+                    </li>
+                  </ul>
                 </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">5. Privacy and Confidentiality</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      We take your privacy seriously and are committed to:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Keeping all your personal and financial information confidential</li>
-                      <li>Only using your information for the purpose of providing plan management services</li>
-                      <li>Complying with Australian Privacy Principles</li>
-                      <li>Protecting your information with secure systems and practices</li>
-                      <li>Not sharing your information with third parties without your consent (except as required by law)</li>
-                      <li>Providing you with access to your own information upon request</li>
-                    </ul>
+
+                <!-- 15. Consent -->
+                <div class="mb-10 space-y-6">
+                  <h3 class="font-bold text-base text-primary uppercase tracking-wider border-b border-gray-200 pb-2">15. Consent</h3>
+                  <p class="text-sm text-on-surface-variant leading-relaxed font-semibold italic">
+                    By signing below, you agree to this Service Agreement.
+                  </p>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
+                    <!-- Participant/Nominee Signature -->
+                    <div class="border border-gray-200 rounded-xl p-5 bg-surface-container-low/20 space-y-4">
+                      <h4 class="font-bold text-sm text-on-background uppercase tracking-wider border-b border-gray-100 pb-2">Participant / Nominee Signature</h4>
+                      
+                      <!-- Signature Name Input -->
+                      <div>
+                        <label for="signature-name" class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Print Full Name <span class="text-error font-bold">*</span></label>
+                        <input type="text" id="signature-name" name="signatureName" required
+                          class="w-full bg-transparent border-b border-gray-300 focus:border-primary focus:ring-0 px-2 py-1 transition-all outline-none text-sm font-semibold"
+                          placeholder="Type your name to sign">
+                        <p id="error-signature-name" class="text-error text-xs hidden mt-1 flex items-center gap-1">
+                          <span class="material-symbols-outlined text-sm">error</span> Please print signatory name.
+                        </p>
+                      </div>
+                      
+                      <!-- Canvas Signature Pad -->
+                      <div>
+                        <label class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Signature Drawing <span class="text-error font-bold">*</span></label>
+                        <div class="relative bg-gray-50 border border-gray-300 rounded-lg overflow-hidden group shadow-inner">
+                          <canvas id="signature-pad" class="w-full h-32 cursor-crosshair" width="350" height="128"></canvas>
+                          <div class="absolute top-2 right-2 opacity-60 hover:opacity-100 transition-opacity">
+                            <button type="button" onclick="clearSignatureCanvas()" class="bg-white shadow border border-gray-200 rounded px-2 py-1 text-xs text-primary font-bold flex items-center gap-1">
+                              <span class="material-symbols-outlined text-sm">restart_alt</span> Clear
+                            </button>
+                          </div>
+                        </div>
+                        <p id="error-signature-pad" class="text-error text-xs hidden mt-1 flex items-center gap-1">
+                          <span class="material-symbols-outlined text-sm">error</span> Please draw your signature on the pad.
+                        </p>
+                      </div>
+
+                      <!-- Date Field -->
+                      <div>
+                        <label class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Date Signed</label>
+                        <input type="text" id="signature-date" name="signatureDate" readonly
+                          class="w-full bg-transparent border-b border-gray-200 text-on-surface-variant/80 px-2 py-1 text-sm font-semibold outline-none cursor-not-allowed">
+                      </div>
+                    </div>
+
+                    <!-- Provider Representative Signature (Pre-filled) -->
+                    <div class="border border-gray-200 rounded-xl p-5 bg-surface-container-low/20 space-y-4 flex flex-col justify-between">
+                      <div>
+                        <h4 class="font-bold text-sm text-on-background uppercase tracking-wider border-b border-gray-100 pb-2">Provider Representative</h4>
+                        
+                        <div class="mt-4">
+                          <span class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Representative Name</span>
+                          <span class="text-sm font-semibold text-on-surface">LG Community Partners Representative</span>
+                        </div>
+                        
+                        <!-- Pre-filled Signature Stamp -->
+                        <div class="mt-4">
+                          <span class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Representative Signature</span>
+                          <div class="bg-primary/5 border border-primary/20 rounded-lg p-3 h-32 flex flex-col items-center justify-center relative overflow-hidden">
+                            <!-- Digital signature seal SVG behind -->
+                            <div class="absolute -right-4 -bottom-4 opacity-10 text-primary pointer-events-none">
+                              <span class="material-symbols-outlined text-[120px]">verified</span>
+                            </div>
+                            
+                            <p class="font-serif italic text-2xl text-primary tracking-wide selection:bg-transparent">LG Community Partners</p>
+                            <div class="flex items-center gap-1 text-[10px] text-secondary font-bold uppercase mt-2 bg-secondary/10 px-2 py-0.5 rounded-full border border-secondary/20">
+                              <span class="material-symbols-outlined text-xs">verified</span> Securely Signed
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Date Field -->
+                      <div class="mt-4">
+                        <span class="block text-xs font-bold text-on-surface-variant uppercase mb-1">Date Signed</span>
+                        <span id="provider-date" class="text-sm font-semibold text-on-surface"></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Section 6: NDIS Compliance -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+                <!-- Continue Button -->
+                <div class="flex justify-center pt-6 no-print border-t border-gray-100">
+                  <button type="button" onclick="validateAndContinue()"
+                    class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-12 py-4 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl h-[56px] gap-2 font-bold group">
+                    Continue
+                    <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  </button>
                 </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">6. NDIS Compliance</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      As a registered NDIS provider, we are committed to:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Complying with all NDIS legislation and guidelines</li>
-                      <li>Adhering to the NDIS Code of Conduct</li>
-                      <li>Following NDIS pricing guidelines and payment requirements</li>
-                      <li>Maintaining appropriate records and documentation</li>
-                      <li>Reporting accurately to the NDIS</li>
-                      <li>Cooperating with NDIS audits and compliance reviews</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Section 7: Communication -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[24px]">chat</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">7. How We Communicate</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      We are committed to keeping you informed:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Your dedicated plan manager is available by phone during business hours</li>
-                      <li>We provide regular updates via email, phone, or your preferred method</li>
-                      <li>You can access your account dashboard online for real-time information</li>
-                      <li>We respond to inquiries within 2-3 business days</li>
-                      <li>You can contact us by phone at 1300 CARE (1300 2273)</li>
-                      <li>You can email us at hello@planwise.com.au</li>
-                      <li>For urgent matters, please call our phone line for immediate assistance</li>
-                    </ul>
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <!-- Section 8: Fees -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">currency_exchange</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">8. Service Fees</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      <strong>No out-of-pocket costs:</strong> There are no fees payable by you directly. The NDIS provides separate funding for plan management services in your 'Improved Life Choices' budget category.
-                    </p>
-                    <p>
-                      <strong>Fee structure:</strong> Our fees are determined by the NDIS and are paid directly from your plan management funding. There are no hidden charges or surprise costs.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Section 9: Conflict Resolution -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[28px]">diversity_3</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">9. Dispute Resolution</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      If you have any concerns or complaints about our service:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>Please contact your plan manager to discuss the issue</li>
-                      <li>We will investigate the matter thoroughly and aim to resolve it within 5 business days</li>
-                      <li>If unresolved, you can lodge a formal complaint in writing</li>
-                      <li>You can also contact the NDIS Quality and Safeguards Commission</li>
-                      <li>We also have a formal complaints process - see our Complaints & Feedback page for more details</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Section 10: Termination -->
-            <div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-container-low shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">logout</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">10. Termination of Services</h2>
-                  <div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                    <p>
-                      You have the right to change your plan manager at any time:
-                    </p>
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>You can terminate this agreement by notifying us in writing</li>
-                      <li>We will assist with a smooth transition to your new plan manager</li>
-                      <li>We will provide all necessary documentation and information about your account</li>
-                      <li>We may terminate services if you breach this agreement or NDIS requirements</li>
-                      <li>We will provide reasonable notice before terminating services</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Section 11: Your Rights -->
-            <div class="bg-primary/10 rounded-xl p-8 border border-primary/20 shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-primary text-[24px]">shield</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">11. Your Rights as a Participant</h2>
-                  <div class="space-y-4 font-body-md text-on-surface">
-                    <ul class="list-disc pl-6 space-y-2">
-                      <li>The right to choose your plan manager</li>
-                      <li>The right to be treated with respect and dignity</li>
-                      <li>The right to access your own information</li>
-                      <li>The right to have your financial information kept confidential</li>
-                      <li>The right to receive regular updates and reports</li>
-                      <li>The right to ask questions about your plan and services</li>
-                      <li>The right to complain if you're not satisfied with our service</li>
-                      <li>The right to change plan managers</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Section 12: Getting Started -->
-            <div class="bg-secondary-fixed/10 rounded-xl p-8 border border-secondary-fixed/20 shadow-sm">
-              <div class="flex items-start gap-4 mb-6">
-                <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-secondary text-[24px]">rocket_launch</span>
-                </div>
-                <div class="flex-grow">
-                  <h2 class="font-headline-md text-headline-md text-on-surface mb-3">Getting Started with PlanWise</h2>
-                  <div class="space-y-4 font-body-md text-on-surface">
-                    <p>
-                      To begin your plan management journey with us, simply:
-                    </p>
-                    <ol class="list-decimal pl-6 space-y-2">
-                      <li>Contact us through our website, phone, or email</li>
-                      <li>Speak with one of our friendly team members</li>
-                      <li>Provide your NDIS plan details and information about your current providers</li>
-                      <li>Review and sign this Service Agreement</li>
-                      <li>Set up your account and access our online dashboard</li>
-                      <li>Start receiving expert plan management support</li>
-                    </ol>
-                    <p class="mt-4">
-                      By signing this agreement, you confirm that you have read and understood our Service Agreement and agree to these terms and conditions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </form>
           </div>
 
-          <!-- CTA Section -->
-          <div class="mt-16 bg-gradient-to-r from-primary/5 to-secondary-fixed/5 rounded-xl p-8 border border-primary/20 text-center slide-up delay-100">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Ready to Start Your Journey?</h3>
-            <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-2xl mx-auto">
-              Now that you understand how we work, let's get started. Contact our team today to discuss your NDIS plan management needs.
+          <!-- Hidden IFrame and Form for Google Form Submission -->
+          <iframe name="google_form_iframe" id="google-form-iframe" style="display:none;"></iframe>
+          <form id="google-form-submit" action="https://docs.google.com/forms/d/e/1FAIpQLScm0PmWoddilpN3JmTR9u5aUnhn273rU8tvJISwOvt3hlb4oQ/formResponse" method="POST" target="google_form_iframe" class="hidden">
+          </form>
+
+          <!-- Loading Overlay -->
+          <div id="loading-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/75 backdrop-blur-md hidden no-print">
+            <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-white font-bold text-lg" id="loading-text">Generating Signed PDF...</p>
+            <p class="text-white/70 text-sm mt-1" id="loading-subtext">Please do not close this window.</p>
+          </div>
+
+          <!-- Success View Container (Hidden initially) -->
+          <div id="success-view" class="max-w-2xl mx-auto bg-white border border-secondary/20 shadow-2xl rounded-2xl p-6 sm:p-12 text-center slide-up no-print hidden">
+            <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mx-auto mb-6 relative">
+              <div class="absolute inset-0 bg-secondary/5 rounded-full animate-ping"></div>
+              <span class="material-symbols-outlined text-[48px] relative z-10 animate-bounce">check_circle</span>
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-on-background mb-4">Agreement Signed &amp; Submitted!</h2>
+            <p class="text-base text-on-surface-variant mb-8 max-w-lg mx-auto">
+              Thank you for completing the NDIS Plan Management Service Agreement. Your submission has been securely processed and sent to the administration team.
             </p>
+
+            <div class="bg-surface-container-low border border-surface-variant/30 rounded-2xl p-6 mb-8 text-left space-y-4">
+              <h3 class="font-bold text-xs uppercase tracking-wider text-primary border-b border-surface-variant/20 pb-2">Submission Details</h3>
+              <div class="grid grid-cols-2 gap-y-3 gap-x-2 text-sm text-on-surface-variant">
+                <div>Reference ID:</div>
+                <div class="font-mono font-bold text-on-surface animate-pulse" id="success-ref-id">LG-SA-2026-XXXX</div>
+                
+                <div>Date Submitted:</div>
+                <div class="font-semibold text-on-surface" id="success-date">27/06/2026</div>
+
+                <div>Participant Name:</div>
+                <div class="font-semibold text-on-surface" id="success-participant-name">-</div>
+
+                <div>NDIS Number:</div>
+                <div class="font-semibold text-on-surface" id="success-ndis-number">-</div>
+              </div>
+            </div>
+
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full flex items-center justify-center shadow-md hover:shadow-lg h-[56px]"
-                href="index.html#contact"
-              >
-                Get Started Today
-              </a>
-              <a
-                class="bg-transparent border-2 border-secondary text-on-surface hover:bg-secondary-fixed/50 transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full flex items-center justify-center h-[56px]"
-                href="tel:1300CARE"
-              >
-                Call 1300 CARE
+              <button type="button" onclick="printAgreement()"
+                class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full flex items-center justify-center shadow-md h-[48px] gap-2 font-bold">
+                <span class="material-symbols-outlined text-[20px]">print</span>
+                Print / Save PDF
+              </button>
+              <a href="index.html"
+                class="bg-transparent border-2 border-secondary text-on-surface hover:bg-secondary/10 transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full flex items-center justify-center h-[48px] font-bold">
+                Back to Home
               </a>
             </div>
           </div>
+
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-tertiary dark:bg-tertiary-container w-full pt-xl pb-md">
-      <div
-        class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8"
-      >
-        <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
-          <span
-            class="font-headline-md text-headline-md font-bold text-on-tertiary"
-            >PlanWise</span
-          >
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 mt-2 text-sm"
-          >
-            Empowering NDIS participants with transparent, stress-free plan
-            management and dedicated support across Australia.
-          </p>
-        </div>
-        <div class="col-span-1 flex flex-col gap-3">
-          <h4
-            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
-          >
-            Quick Links
-          </h4>
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="index.html#home"
-            >Home</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="index.html#about"
-            >About Us</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="index.html#services"
-            >Services</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="index.html#contact"
-            >Contact</a
-          >
-        </div>
-        <div class="col-span-1 flex flex-col gap-3">
-          <h4
-            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
-          >
-            Resources
-          </h4>
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="index.html#faq"
-            >FAQ</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-secondary-fixed dark:text-secondary-fixed font-bold"
-            href="service-agreement.html"
-            >Service Agreement</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="privacy-policy.html"
-            >Privacy Policy</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="terms-of-service.html"
-            >Terms of Service</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="ndis-code-of-conduct.html"
-            >NDIS Code of Conduct</a
-          >
-          <a
-            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
-            href="complaints.html"
-            >Complaints &amp; Feedback</a
-          >
-        </div>
-        <div class="col-span-1 flex flex-col gap-3">
-          <h4
-            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
-          >
-            Contact Us
-          </h4>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px]">call</span> 1300
-            CARE
-          </p>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px]">mail</span>
-            hello@planwise.com.au
-          </p>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-start gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px] mt-1"
-              >location_on</span
-            >
-            Level 1, 123 Support St,<br />Melbourne VIC 3000
-          </p>
-        </div>
-      </div>
-      <div
-        class="px-margin-desktop max-w-[1440px] mx-auto border-t border-on-tertiary/20 pt-6 mt-6"
-      >
-        <div
-          class="bg-tertiary-container/50 p-4 rounded-lg mb-6 border border-on-tertiary/10"
-        >
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 text-center italic"
-          >
-            <strong>NDIS Acknowledgement:</strong> PlanWise acknowledges the
-            Traditional Custodians of country throughout Australia and their
-            connections to land, sea and community. We pay our respect to their
-            Elders past and present and extend that respect to all Aboriginal
-            and Torres Strait Islander peoples today.
-          </p>
-        </div>
-        <p class="font-label-sm text-label-sm text-on-tertiary/80 text-center">
-          © 2024 PlanWise NDIS Plan Management. Registered NDIS Provider.
-        </p>
-      </div>
-    </footer>
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden no-print" role="dialog" aria-modal="true">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 border-b border-gray-100 pb-4 mb-6">
+            <div class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">description</span>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-on-background">Confirm Agreement Details</h2>
+              <p class="text-xs text-on-surface-variant">Please review the details below before submitting.</p>
+            </div>
+          </div>
 
+          <div class="space-y-4 text-sm text-on-surface-variant">
+            <!-- Participant Summary -->
+            <div class="bg-surface-container-low/40 p-4 rounded-xl space-y-2 border border-surface-variant/10">
+              <h4 class="font-bold text-xs uppercase tracking-wider text-primary">Participant Details</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-on-surface text-sm">
+                <div><span class="text-xs text-on-surface-variant block">Full Name:</span> <span id="summary-participant-name" class="font-semibold"></span></div>
+                <div><span class="text-xs text-on-surface-variant block">NDIS Number:</span> <span id="summary-ndis-number" class="font-semibold"></span></div>
+                <div class="sm:col-span-2"><span class="text-xs text-on-surface-variant block">Phone Number:</span> <span id="summary-participant-phone" class="font-semibold"></span></div>
+                <div class="sm:col-span-2"><span class="text-xs text-on-surface-variant block">Address:</span> <span id="summary-participant-address" class="font-semibold"></span></div>
+                <div class="sm:col-span-2" id="summary-nominee-container"><span class="text-xs text-on-surface-variant block">Nominee Name:</span> <span id="summary-nominee-name" class="font-semibold"></span></div>
+              </div>
+            </div>
+
+            <!-- Details Summary -->
+            <div class="bg-surface-container-low/40 p-4 rounded-xl space-y-2 border border-surface-variant/10">
+              <h4 class="font-bold text-xs uppercase tracking-wider text-primary">Preferences & Documents</h4>
+              <div class="space-y-2 text-on-surface text-sm">
+                <div><span class="text-xs text-on-surface-variant block">Communication Preferences:</span> <span id="summary-comm-pref" class="font-semibold"></span></div>
+                <div>
+                  <span class="text-xs text-on-surface-variant block">Uploaded Budget Files:</span> 
+                  <ul id="summary-files-list" class="list-disc pl-5 font-semibold text-xs mt-1 space-y-1"></ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Signature Summary -->
+            <div class="bg-surface-container-low/40 p-4 rounded-xl space-y-2 border border-surface-variant/10">
+              <h4 class="font-bold text-xs uppercase tracking-wider text-primary">Signature & Consent</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+                <div>
+                  <span class="text-xs text-on-surface-variant block">Signatory Name:</span> <span id="summary-signature-name" class="font-semibold"></span>
+                  <span class="text-xs text-on-surface-variant block mt-2">Date Signed:</span> <span id="summary-signature-date" class="font-semibold"></span>
+                </div>
+                <div>
+                  <span class="text-xs text-on-surface-variant block mb-1">Digital Signature Preview:</span>
+                  <div class="bg-gray-50 border border-gray-200 rounded p-2 flex items-center justify-center h-20">
+                    <img id="summary-signature-image" src="" alt="Participant Signature" class="max-h-full max-w-full object-contain">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-6 border-t border-gray-100 mt-6">
+          <button type="button" onclick="closeConfirmationModal()"
+            class="w-full sm:w-1/2 bg-transparent border-2 border-gray-300 text-on-surface hover:bg-gray-50 transition-colors font-label-md text-label-md px-6 py-3 rounded-full flex items-center justify-center h-[48px] font-bold">
+            Edit Details
+          </button>
+          <button type="button" onclick="submitAgreementForm()"
+            class="w-full sm:w-1/2 bg-primary text-on-primary hover:bg-primary-container transition-colors font-label-md text-label-md px-6 py-3 rounded-full flex items-center justify-center shadow-md h-[48px] font-bold gap-2">
+            Confirm &amp; Submit
+            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="no-print"></footer>
+
+    <!-- Include html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Form Interactivity Script -->
+    <script>
+      let isDrawing = false;
+      let isSignatureDrawn = false;
+      let canvas, ctx;
+      let uploadedFiles = [];
+      let currentRefId = '';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Generate Reference ID first
+        currentRefId = generateRefId();
+        document.getElementById('header-ref-id').innerText = currentRefId;
+        document.getElementById('success-ref-id').innerText = currentRefId;
+
+        // Set signed dates to today
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+        const yyyy = today.getFullYear();
+        const formattedDate = `${dd}/${mm}/${yyyy}`;
+        
+        document.getElementById('signature-date').value = formattedDate;
+        document.getElementById('provider-date').innerText = formattedDate;
+        
+        // Initialize canvas signature pad
+        initSignaturePad();
+
+        // Setup input validation resets
+        setupValidationResets();
+      });
+
+      function initSignaturePad() {
+        canvas = document.getElementById('signature-pad');
+        ctx = canvas.getContext('2d');
+        
+        // Handle resize
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Mouse events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        
+        // Touch events for mobile/tablet support
+        canvas.addEventListener('touchstart', startDrawingTouch, { passive: false });
+        canvas.addEventListener('touchmove', drawTouch, { passive: false });
+        canvas.addEventListener('touchend', stopDrawing);
+      }
+
+      function resizeCanvas() {
+        let tempImage = null;
+        if (isSignatureDrawn) {
+          tempImage = canvas.toDataURL();
+        }
+        
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        // Reset stroke styles
+        ctx.strokeStyle = '#360071'; // Primary color
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        
+        if (tempImage) {
+          const img = new Image();
+          img.src = tempImage;
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0);
+          };
+        }
+      }
+
+      function getMousePos(e) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      }
+
+      function getTouchPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        return {
+          x: touch.clientX - rect.left,
+          y: touch.clientY - rect.top
+        };
+      }
+
+      function startDrawing(e) {
+        isDrawing = true;
+        const pos = getMousePos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        isSignatureDrawn = true;
+        
+        // Clear signature errors on action
+        document.getElementById('error-signature-pad').classList.add('hidden');
+        canvas.classList.remove('border-error');
+      }
+
+      function startDrawingTouch(e) {
+        e.preventDefault();
+        isDrawing = true;
+        const pos = getTouchPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        isSignatureDrawn = true;
+        
+        document.getElementById('error-signature-pad').classList.add('hidden');
+        canvas.classList.remove('border-error');
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+        const pos = getMousePos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
+
+      function drawTouch(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const pos = getTouchPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
+
+      function stopDrawing() {
+        isDrawing = false;
+      }
+
+      function clearSignatureCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        isSignatureDrawn = false;
+      }
+
+      function toggleCommOtherInput(checkbox) {
+        const container = document.getElementById('comm-other-container');
+        const input = document.getElementById('comm-other-text');
+        if (checkbox.checked) {
+          container.classList.remove('hidden');
+          input.focus();
+        } else {
+          container.classList.add('hidden');
+          input.value = '';
+        }
+      }
+
+      // Document uploads management
+      function triggerFileInput() {
+        document.getElementById('budget-files').click();
+      }
+
+      function handleFileSelection(e) {
+        const files = e.target.files;
+        addFiles(files);
+      }
+
+      // Setup dropzone
+      const dropzone = document.getElementById('dropzone');
+      if (dropzone) {
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+          dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }, false);
+        });
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+          dropzone.addEventListener(eventName, () => {
+            dropzone.classList.add('border-primary', 'bg-primary/5');
+          }, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+          dropzone.addEventListener(eventName, () => {
+            dropzone.classList.remove('border-primary', 'bg-primary/5');
+          }, false);
+        });
+        
+        dropzone.addEventListener('drop', (e) => {
+          const files = e.dataTransfer.files;
+          addFiles(files);
+        }, false);
+      }
+
+      function addFiles(files) {
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          if (file.size > 10 * 1024 * 1024) {
+            alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+            continue;
+          }
+          if (uploadedFiles.some(f => f.name === file.name && f.size === file.size)) {
+            continue;
+          }
+          uploadedFiles.push(file);
+        }
+        renderFileList();
+      }
+
+      function removeFile(index) {
+        uploadedFiles.splice(index, 1);
+        renderFileList();
+      }
+
+      function renderFileList() {
+        const list = document.getElementById('uploaded-files-list');
+        const container = document.getElementById('uploaded-files-container');
+        
+        if (uploadedFiles.length === 0) {
+          container.classList.add('hidden');
+          list.innerHTML = '';
+          return;
+        }
+        
+        container.classList.remove('hidden');
+        list.innerHTML = '';
+        
+        uploadedFiles.forEach((file, index) => {
+          const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+          let icon = 'description';
+          if (file.type.includes('image')) icon = 'image';
+          else if (file.type.includes('pdf')) icon = 'picture_as_pdf';
+          
+          const item = document.createElement('div');
+          item.className = 'flex items-center justify-between bg-surface-container-low border border-surface-variant/30 rounded-lg p-3 text-sm';
+          item.innerHTML = `
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">${icon}</span>
+              <div>
+                <p class="font-semibold text-on-surface max-w-[200px] sm:max-w-md truncate">${file.name}</p>
+                <p class="text-xs text-on-surface-variant/80">${sizeMB} MB</p>
+              </div>
+            </div>
+            <button type="button" onclick="removeFile(${index})" class="text-error hover:text-on-error-container p-1 rounded-full hover:bg-error-container/30 transition-colors">
+              <span class="material-symbols-outlined text-[20px]">delete</span>
+            </button>
+          `;
+          list.appendChild(item);
+        });
+      }
+
+      // Live validation resets on input
+      function setupValidationResets() {
+        const fields = [
+          { id: 'participant-name', errId: 'error-participant-name' },
+          { id: 'ndis-number', errId: 'error-ndis-number' },
+          { id: 'participant-address', errId: 'error-participant-address' },
+          { id: 'signature-name', errId: 'error-signature-name' }
+        ];
+
+        fields.forEach(f => {
+          const input = document.getElementById(f.id);
+          input.addEventListener('input', () => {
+            if (input.value.trim()) {
+              if (f.id === 'ndis-number') {
+                const ndisPattern = /^[0-9]{9}$/;
+                if (ndisPattern.test(input.value.trim())) {
+                  input.classList.remove('border-error');
+                  document.getElementById(f.errId).classList.add('hidden');
+                }
+              } else {
+                input.classList.remove('border-error');
+                document.getElementById(f.errId).classList.add('hidden');
+              }
+            }
+          });
+        });
+      }
+
+      function validateAndContinue() {
+        let isValid = true;
+        
+        // 1. Participant Name
+        const pName = document.getElementById('participant-name');
+        const errPName = document.getElementById('error-participant-name');
+        if (!pName.value.trim()) {
+          pName.classList.add('border-error');
+          errPName.classList.remove('hidden');
+          isValid = false;
+        } else {
+          pName.classList.remove('border-error');
+          errPName.classList.add('hidden');
+        }
+        
+        // 2. NDIS Number (must be 9 digits)
+        const ndis = document.getElementById('ndis-number');
+        const errNdis = document.getElementById('error-ndis-number');
+        const ndisPattern = /^[0-9]{9}$/;
+        if (!ndis.value.trim() || !ndisPattern.test(ndis.value.trim())) {
+          ndis.classList.add('border-error');
+          errNdis.classList.remove('hidden');
+          isValid = false;
+        } else {
+          ndis.classList.remove('border-error');
+          errNdis.classList.add('hidden');
+        }
+        
+        // 3. Address
+        const address = document.getElementById('participant-address');
+        const errAddress = document.getElementById('error-participant-address');
+        if (!address.value.trim()) {
+          address.classList.add('border-error');
+          errAddress.classList.remove('hidden');
+          isValid = false;
+        } else {
+          address.classList.remove('border-error');
+          errAddress.classList.add('hidden');
+        }
+        
+        // 4. Consent Signature Name
+        const sigName = document.getElementById('signature-name');
+        const errSigName = document.getElementById('error-signature-name');
+        if (!sigName.value.trim()) {
+          sigName.classList.add('border-error');
+          errSigName.classList.remove('hidden');
+          isValid = false;
+        } else {
+          sigName.classList.remove('border-error');
+          errSigName.classList.add('hidden');
+        }
+        
+        // 5. Signature canvas drawn
+        const errCanvas = document.getElementById('error-signature-pad');
+        const canvasPad = document.getElementById('signature-pad');
+        if (!isSignatureDrawn) {
+          canvasPad.classList.add('border-error');
+          errCanvas.classList.remove('hidden');
+          isValid = false;
+        } else {
+          canvasPad.classList.remove('border-error');
+          errCanvas.classList.add('hidden');
+        }
+        
+        if (!isValid) {
+          const firstError = document.querySelector('.border-error');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+        
+        populateConfirmationModal();
+        openConfirmationModal();
+      }
+
+      function populateConfirmationModal() {
+        document.getElementById('summary-participant-name').innerText = document.getElementById('participant-name').value;
+        document.getElementById('summary-ndis-number').innerText = document.getElementById('ndis-number').value;
+        document.getElementById('summary-participant-address').innerText = document.getElementById('participant-address').value;
+        
+        const nomineeName = document.getElementById('nominee-name').value.trim();
+        const nomineeContainer = document.getElementById('summary-nominee-container');
+        if (nomineeName) {
+          nomineeContainer.classList.remove('hidden');
+          document.getElementById('summary-nominee-name').innerText = nomineeName;
+        } else {
+          nomineeContainer.classList.add('hidden');
+        }
+        
+        // Comm preference check
+        const checkboxes = document.querySelectorAll('input[name="comm_pref"]:checked');
+        let commPrefs = [];
+        checkboxes.forEach(cb => {
+          if (cb.value === 'Other') {
+            const otherText = document.getElementById('comm-other-text').value.trim();
+            commPrefs.push(otherText ? `Other (${otherText})` : 'Other');
+          } else {
+            commPrefs.push(cb.value);
+          }
+        });
+        document.getElementById('summary-comm-pref').innerText = commPrefs.length > 0 ? commPrefs.join(', ') : 'None specified';
+        
+        // Files check
+        const summaryFilesList = document.getElementById('summary-files-list');
+        summaryFilesList.innerHTML = '';
+        if (uploadedFiles.length === 0) {
+          summaryFilesList.innerHTML = '<li class="text-on-surface-variant/60 font-normal italic list-none">No documents uploaded</li>';
+        } else {
+          uploadedFiles.forEach(file => {
+            const li = document.createElement('li');
+            li.innerText = `${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+            summaryFilesList.appendChild(li);
+          });
+        }
+        
+        document.getElementById('summary-signature-name').innerText = document.getElementById('signature-name').value;
+        document.getElementById('summary-signature-date').innerText = document.getElementById('signature-date').value;
+        
+        const dataURL = canvas.toDataURL();
+        document.getElementById('summary-signature-image').src = dataURL;
+      }
+
+      function openConfirmationModal() {
+        const modal = document.getElementById('confirmation-modal');
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeConfirmationModal() {
+        const modal = document.getElementById('confirmation-modal');
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      function generateRefId() {
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        return `LG-SA-${yyyy}-${randomNum}`;
+      }
+
+      function submitAgreementForm() {
+        closeConfirmationModal();
+        
+        // Show loading screen for PDF creation
+        document.getElementById('loading-text').innerText = "Generating Signed PDF...";
+        document.getElementById('loading-subtext').innerText = "Preparing document for download...";
+        document.getElementById('loading-overlay').classList.remove('hidden');
+
+        // Target document element
+        const element = document.getElementById('document-paper');
+        const opt = {
+          margin:       0.3,
+          filename:     `PlanWise_Agreement_${currentRefId}.pdf`,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // Generate PDF
+        html2pdf().set(opt).from(element).outputPdf('blob').then((pdfBlob) => {
+          // Trigger browser download of PDF
+          const pdfUrl = URL.createObjectURL(pdfBlob);
+          const downloadLink = document.createElement('a');
+          downloadLink.href = pdfUrl;
+          downloadLink.download = `PlanWise_Agreement_${currentRefId}.pdf`;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+          URL.revokeObjectURL(pdfUrl);
+
+          // Trigger browser downloads of supporting files
+          if (uploadedFiles.length > 0) {
+            uploadedFiles.forEach(file => {
+              const fileUrl = URL.createObjectURL(file);
+              const fileLink = document.createElement('a');
+              fileLink.href = fileUrl;
+              fileLink.download = file.name;
+              document.body.appendChild(fileLink);
+              fileLink.click();
+              document.body.removeChild(fileLink);
+              URL.revokeObjectURL(fileUrl);
+            });
+          }
+
+          // Transition loading text to submission state
+          document.getElementById('loading-text').innerText = "Submitting Form Details...";
+          document.getElementById('loading-subtext').innerText = "Connecting to Google Forms...";
+
+          // Send POST request details
+          submitToGoogleForm();
+        }).catch((err) => {
+          console.error("PDF generation error: ", err);
+          submitToGoogleForm();
+        });
+      }
+
+      function submitToGoogleForm() {
+        const formSubmit = document.getElementById('google-form-submit');
+        formSubmit.innerHTML = ''; // Reset
+
+        // Setup mappings
+        const fields = {
+          'entry.122501221': document.getElementById('participant-name').value,
+          'entry.1831332180': document.getElementById('ndis-number').value,
+          'entry.1452034995': document.getElementById('participant-address').value,
+          'entry.1354938781': document.getElementById('nominee-name').value,
+          'entry.1705152826': document.getElementById('signature-name').value,
+          'entry.1324450750': document.getElementById('signature-date').value,
+          'entry.27501572': currentRefId
+        };
+
+        // Append values to hidden submit form
+        for (const [name, value] of Object.entries(fields)) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = name;
+          input.value = value;
+          formSubmit.appendChild(input);
+        }
+
+        // Communication preferences inputs
+        const checkboxes = document.querySelectorAll('input[name="comm_pref"]:checked');
+        checkboxes.forEach(cb => {
+          if (cb.value === 'Other') {
+            const otherVal = document.getElementById('comm-other-text').value.trim() || 'Other';
+            
+            const otherOpt = document.createElement('input');
+            otherOpt.type = 'hidden';
+            otherOpt.name = 'entry.1241014908';
+            otherOpt.value = '__other_option__';
+            formSubmit.appendChild(otherOpt);
+            
+            const otherResp = document.createElement('input');
+            otherResp.type = 'hidden';
+            otherResp.name = 'entry.1241014908.other_option_response';
+            otherResp.value = otherVal;
+            formSubmit.appendChild(otherResp);
+          } else {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'entry.1241014908';
+            input.value = cb.value;
+            formSubmit.appendChild(input);
+          }
+        });
+
+        // Trigger hidden iframe submit
+        let isSubmitted = false;
+        const iframe = document.getElementById('google-form-iframe');
+        
+        iframe.onload = () => {
+          if (!isSubmitted) {
+            isSubmitted = true;
+            
+            // Wait 1.5s to show a clean simulation state
+            setTimeout(() => {
+              // Hide loading overlay
+              document.getElementById('loading-overlay').classList.add('hidden');
+              
+              // Set success details
+              const today = new Date();
+              const dd = String(today.getDate()).padStart(2, '0');
+              const mm = String(today.getMonth() + 1).padStart(2, '0');
+              const yyyy = today.getFullYear();
+              const formattedDate = `${dd}/${mm}/${yyyy}`;
+              
+              document.getElementById('success-participant-name').innerText = document.getElementById('participant-name').value;
+              document.getElementById('success-ndis-number').innerText = document.getElementById('ndis-number').value;
+              document.getElementById('success-date').innerText = formattedDate;
+              
+              // Change views
+              document.getElementById('document-paper-container').classList.add('hidden');
+              document.getElementById('success-view').classList.remove('hidden');
+              
+              // Scroll to top of success screen
+              document.getElementById('success-view').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1500);
+          }
+        };
+
+        formSubmit.submit();
+      }
+
+      function printAgreement() {
+        const paper = document.getElementById('document-paper-container');
+        const success = document.getElementById('success-view');
+        
+        // Show document momentarily for printing
+        paper.classList.remove('hidden');
+        success.classList.add('hidden');
+        
+        window.print();
+        
+        // Restore screen layout
+        paper.classList.add('hidden');
+        success.classList.remove('hidden');
+      }
+    </script>
   </body>
 </html>
