@@ -54,10 +54,10 @@
         <div class="hidden lg:flex items-center gap-4">
           <a
             class="font-body-md text-body-md text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors"
-            href="tel:1300CARE"
+            href="tel:0498475578"
           >
             <span class="material-symbols-outlined text-[20px]">call</span>
-            1300 CARE
+            0498475578
           </a>
           <a
             class="bg-primary text-white hover:bg-primary-container transition-colors duration-200 font-body-md text-body-md px-6 py-2 rounded-full flex items-center justify-center shadow-sm hover:shadow-md"
@@ -124,9 +124,9 @@
           >
             <a
               class="font-body-md text-on-surface-variant flex items-center gap-2"
-              href="tel:1300CARE"
+              href="tel:0498475578"
             >
-              <span class="material-symbols-outlined">call</span> 1300 CARE
+              <span class="material-symbols-outlined">call</span> 0498475578
             </a>
             <a
               class="bg-primary text-on-primary text-center py-3 rounded-full font-body-md flex items-center justify-center"

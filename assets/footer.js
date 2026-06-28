@@ -9,6 +9,11 @@
             class="font-headline-md text-headline-md font-bold text-on-tertiary"
           >PlanWise</span>
           <p
+            class="font-label-sm text-label-sm text-on-tertiary/75 dark:text-on-tertiary-container/75 -mt-2 text-xs font-bold tracking-wide"
+          >
+            Community Partners Trading as LG Community Partners Pty Ltd
+          </p>
+          <p
             class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 mt-2 text-sm"
           >
             Empowering NDIS participants with transparent, stress-free plan
@@ -109,19 +114,19 @@
           <p
             class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
           >
-            <span class="material-symbols-outlined text-[18px]">call</span> 1300 CARE
+            <span class="material-symbols-outlined text-[18px]">call</span> 0498475578
           </p>
           <p
             class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
           >
             <span class="material-symbols-outlined text-[18px]">mail</span>
-            hello@planwise.com.au
+            contact@plan-wise.lgpartners.com.au
           </p>
           <p
             class="font-label-sm text-label-sm text-on-tertiary/80 flex items-start gap-2"
           >
             <span class="material-symbols-outlined text-[18px] mt-1">location_on</span>
-            Level 1, 123 Support St,<br />Melbourne VIC 3000
+            8 White Cedar Drive,<br />Castle Hill NSW 2154
           </p>
         </div>
       </div>
@@ -182,7 +187,7 @@
   function setYear(container) {
     const yearElement = container.querySelector("[data-footer-year]");
     if (yearElement) {
-      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} PlanWise NDIS Plan Management. Registered NDIS Provider.`;
+      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} PlanWise Community Partners Trading as LG Community Partners Pty Ltd. Registered NDIS Provider.`;
     }
   }
 
