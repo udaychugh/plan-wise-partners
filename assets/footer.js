@@ -2,7 +2,7 @@
   const FOOTER_HTML = `
     <footer class="bg-tertiary dark:bg-tertiary-container w-full pt-xl pb-md">
       <div
-        class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8"
+        class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-5 gap-gutter mb-8"
       >
         <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
           <span
@@ -128,6 +128,25 @@
             <span class="material-symbols-outlined text-[18px] mt-1">location_on</span>
             8 White Cedar Drive,<br />Castle Hill NSW 2154
           </p>
+        </div>
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4
+            class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
+          >
+            Other Services
+          </h4>
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="https://lgpartners.com.au"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Accounting &amp; Reporting</a>
+          <a
+            class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 hover:text-on-tertiary dark:hover:text-on-tertiary-container hover:underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary"
+            href="https://freelab.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Tech &amp; IT</a>
         </div>
       </div>
       <div
