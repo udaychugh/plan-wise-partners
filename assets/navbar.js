@@ -149,6 +149,7 @@
     "privacy-policy.html": null,
     "terms-of-service.html": null,
     "ndis-code-of-conduct.html": null,
+    "refer.html": null,
   };
 
   const ACTIVE_CLASSSETS = {

@@ -1,0 +1,1130 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Refer a Participant | PlanWise NDIS Plan Management</title>
+    <meta name="description" content="Refer a participant to PlanWise for stress-free NDIS plan management. Complete our simple referral form and we'll handle the rest." />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#4c6f00",
+              "surface-dim": "#dcd9d9",
+              "primary-fixed-dim": "#d6baff",
+              "surface-container-lowest": "#ffffff",
+              surface: "#fcf9f8",
+              tertiary: "#26252d",
+              "on-tertiary-container": "#a8a5ae",
+              error: "#ba1a1a",
+              "surface-container": "#f0eded",
+              "on-secondary-fixed-variant": "#354e00",
+              "tertiary-fixed": "#e5e1eb",
+              "on-primary-fixed": "#280056",
+              "on-primary-container": "#bc92fe",
+              "surface-tint": "#7148af",
+              primary: "#360071",
+              "inverse-primary": "#d6baff",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#3c3b43",
+              "on-background": "#1b1c1c",
+              "secondary-fixed-dim": "#9dd82c",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#582e96",
+              "primary-container": "#4d218a",
+              "on-surface-variant": "#4a4451",
+              background: "#fcf9f8",
+              "surface-container-high": "#eae7e7",
+              "tertiary-fixed-dim": "#c8c5ce",
+              "on-tertiary-fixed-variant": "#47464e",
+              "on-error": "#ffffff",
+              outline: "#7b7483",
+              "surface-container-low": "#f6f3f2",
+              "on-primary": "#ffffff",
+              "surface-bright": "#fcf9f8",
+              "surface-variant": "#e4e2e1",
+              "inverse-surface": "#303030",
+              "secondary-container": "#b8f649",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#131f00",
+              "on-tertiary-fixed": "#1b1b22",
+              "outline-variant": "#ccc3d3",
+              "surface-container-highest": "#e4e2e1",
+              secondary: "#476800",
+              "on-surface": "#1b1c1c",
+              "primary-fixed": "#ecdcff",
+              "secondary-fixed": "#b8f649",
+              "inverse-on-surface": "#f3f0f0",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              base: "8px",
+              md: "24px",
+              sm: "12px",
+              "max-width": "1200px",
+              lg: "48px",
+              "margin-mobile": "16px",
+              "margin-desktop": "auto",
+              xs: "4px",
+              gutter: "24px",
+              xl: "80px",
+            },
+            fontFamily: {
+              "headline-lg": ["Atkinson Hyperlegible Next"],
+              "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
+              "body-lg": ["Atkinson Hyperlegible Next"],
+              "body-md": ["Atkinson Hyperlegible Next"],
+              "label-md": ["Atkinson Hyperlegible Next"],
+              "label-sm": ["Atkinson Hyperlegible Next"],
+              "headline-md": ["Atkinson Hyperlegible Next"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": [
+                "20px",
+                {
+                  lineHeight: "1.6",
+                  fontWeight: "400",
+                },
+              ],
+              "body-md": [
+                "18px",
+                {
+                  lineHeight: "1.6",
+                  fontWeight: "400",
+                },
+              ],
+              "label-md": [
+                "16px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-sm": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-md": [
+                "28px",
+                {
+                  lineHeight: "1.3",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="assets/navbar.js"></script>
+    <script defer src="assets/footer.js"></script>
+    <style>
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+        opacity: 0;
+      }
+      .slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Step wizard styles */
+      .step-section {
+        display: none;
+      }
+      .step-section.active {
+        display: block;
+        animation: fadeSlideIn 0.5s ease-out forwards;
+      }
+      @keyframes fadeSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Progress bar */
+      .step-indicator {
+        position: relative;
+      }
+      .step-indicator .step-dot {
+        width: 40px;
+        height: 40px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 10;
+      }
+      .step-dot.completed {
+        background: #476800;
+        color: #ffffff;
+      }
+      .step-dot.active {
+        background: #360071;
+        color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(54, 0, 113, 0.2);
+      }
+      .step-dot.inactive {
+        background: #eae7e7;
+        color: #7b7483;
+      }
+      .step-connector {
+        height: 3px;
+        flex: 1;
+        transition: background 0.3s ease;
+      }
+      .step-connector.completed {
+        background: #476800;
+      }
+      .step-connector.inactive {
+        background: #eae7e7;
+      }
+
+      /* File upload zone */
+      .upload-zone {
+        border: 2px dashed #ccc3d3;
+        transition: all 0.3s ease;
+      }
+      .upload-zone:hover,
+      .upload-zone.dragover {
+        border-color: #360071;
+        background: rgba(236, 220, 255, 0.3);
+      }
+
+      /* Custom checkbox */
+      .custom-checkbox {
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #7b7483;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .custom-checkbox:checked {
+        background: #360071;
+        border-color: #360071;
+      }
+      .custom-checkbox:checked::after {
+        content: "✓";
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden"
+  >
+    <div id="site-navbar"></div>
+    <main class="pt-[80px]">
+      <!-- Hero Banner -->
+      <section
+        class="relative overflow-hidden bg-gradient-to-br from-primary via-primary-container to-primary py-16 md:py-20"
+      >
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-10 left-10 w-72 h-72 bg-secondary-fixed rounded-full blur-3xl"></div>
+          <div class="absolute bottom-10 right-10 w-96 h-96 bg-primary-fixed rounded-full blur-3xl"></div>
+        </div>
+        <div
+          class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10 text-center"
+        >
+          <div class="slide-up">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <span class="material-symbols-outlined text-secondary-fixed text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1">group_add</span>
+              <span class="font-label-sm text-label-sm text-white/90 font-bold">Participant Referral</span>
+            </div>
+            <h1
+              class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-4"
+            >
+              Refer Someone to PlanWise
+            </h1>
+            <p class="font-body-lg text-body-lg text-white/85 max-w-2xl mx-auto">
+              Complete the form below to refer a participant for NDIS plan management. Fields marked with <span class="text-secondary-fixed font-bold">*</span> are required.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Section -->
+      <section class="py-12 md:py-20 bg-surface-container-low">
+        <div class="max-w-[900px] mx-auto px-margin-mobile md:px-6">
+
+          <!-- Step Progress Indicator -->
+          <div class="slide-up mb-12">
+            <div class="flex items-center justify-center gap-0 max-w-[700px] mx-auto" id="step-progress">
+              <!-- Step 1 -->
+              <div class="flex flex-col items-center gap-2 flex-shrink-0">
+                <div class="step-dot active" data-step-dot="1">1</div>
+                <span class="font-label-sm text-label-sm text-on-surface hidden sm:block text-center whitespace-nowrap">Referrer</span>
+              </div>
+              <div class="step-connector inactive" data-step-connector="1"></div>
+              <!-- Step 2 -->
+              <div class="flex flex-col items-center gap-2 flex-shrink-0">
+                <div class="step-dot inactive" data-step-dot="2">2</div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:block text-center whitespace-nowrap">Participant</span>
+              </div>
+              <div class="step-connector inactive" data-step-connector="2"></div>
+              <!-- Step 3 -->
+              <div class="flex flex-col items-center gap-2 flex-shrink-0">
+                <div class="step-dot inactive" data-step-dot="3">3</div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:block text-center whitespace-nowrap">Guardian</span>
+              </div>
+              <div class="step-connector inactive" data-step-connector="3"></div>
+              <!-- Step 4 -->
+              <div class="flex flex-col items-center gap-2 flex-shrink-0">
+                <div class="step-dot inactive" data-step-dot="4">4</div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:block text-center whitespace-nowrap">NDIS Plan</span>
+              </div>
+              <div class="step-connector inactive" data-step-connector="4"></div>
+              <!-- Step 5 -->
+              <div class="flex flex-col items-center gap-2 flex-shrink-0">
+                <div class="step-dot inactive" data-step-dot="5">5</div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:block text-center whitespace-nowrap">Consent</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form class="slide-up delay-100" id="referral-form" novalidate>
+
+            <!-- Step 1: Referrer Details -->
+            <div class="step-section active" data-step="1">
+              <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high p-6 md:p-10">
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-[24px]">person_add</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Referrer Details</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Your information as the person making the referral</p>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-name">
+                      Full Name <span class="text-error">*</span>
+                    </label>
+                    <input
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="referrer-name"
+                      name="referrer_name"
+                      placeholder="Enter your full name"
+                      required
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-organisation">
+                      Organisation
+                    </label>
+                    <input
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="referrer-organisation"
+                      name="referrer_organisation"
+                      placeholder="Your organisation (if applicable)"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-role">
+                      Role / Relationship to Participant <span class="text-error">*</span>
+                    </label>
+                    <select
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="referrer-role"
+                      name="referrer_role"
+                      required
+                    >
+                      <option value="" disabled selected>Select your role/relationship</option>
+                      <option value="support-coordinator">Support Coordinator</option>
+                      <option value="allied-health">Allied Health Professional</option>
+                      <option value="family-member">Family Member</option>
+                      <option value="friend">Friend</option>
+                      <option value="carer">Carer</option>
+                      <option value="healthcare-provider">Healthcare Provider</option>
+                      <option value="self">Self</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-phone">
+                        Phone <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="referrer-phone"
+                        name="referrer_phone"
+                        placeholder="04XX XXX XXX"
+                        required
+                        type="tel"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-email">
+                        Email <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="referrer-email"
+                        name="referrer_email"
+                        placeholder="you@example.com"
+                        required
+                        type="email"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="referrer-contact-method">
+                      Preferred Contact Method <span class="text-error">*</span>
+                    </label>
+                    <select
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="referrer-contact-method"
+                      name="referrer_contact_method"
+                      required
+                    >
+                      <option value="" disabled selected>Select preferred contact method</option>
+                      <option value="phone">Phone</option>
+                      <option value="email">Email</option>
+                      <option value="sms">SMS</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Participant Details -->
+            <div class="step-section" data-step="2">
+              <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high p-6 md:p-10">
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-secondary text-[24px]">accessible</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Participant Details</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Information about the NDIS participant being referred</p>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-name">
+                        Full Name <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-name"
+                        name="participant_name"
+                        placeholder="Participant's full name"
+                        required
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-preferred-name">
+                        Preferred Name
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-preferred-name"
+                        name="participant_preferred_name"
+                        placeholder="What they like to be called"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-dob">
+                        Date of Birth
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-dob"
+                        name="participant_dob"
+                        type="date"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-phone">
+                        Phone <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-phone"
+                        name="participant_phone"
+                        placeholder="04XX XXX XXX"
+                        required
+                        type="tel"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-email">
+                      Email <span class="text-error">*</span>
+                    </label>
+                    <input
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="participant-email"
+                      name="participant_email"
+                      placeholder="participant@example.com"
+                      required
+                      type="email"
+                    />
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-address">
+                      Residential Address
+                    </label>
+                    <input
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="participant-address"
+                      name="participant_address"
+                      placeholder="Full residential address"
+                      type="text"
+                    />
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-language">
+                        Primary Language
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-language"
+                        name="participant_language"
+                        placeholder="e.g. English"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-interpreter">
+                        Interpreter Required
+                      </label>
+                      <select
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="participant-interpreter"
+                        name="participant_interpreter"
+                      >
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-disability">
+                      Disability / Diagnosis
+                    </label>
+                    <textarea
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md resize-none"
+                      id="participant-disability"
+                      name="participant_disability"
+                      placeholder="Please describe the participant's disability or diagnosis"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Nominee/Guardian Details -->
+            <div class="step-section" data-step="3">
+              <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high p-6 md:p-10">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-[24px]">shield_person</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Nominee / Guardian Details</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">If applicable — leave blank if not required</p>
+                  </div>
+                </div>
+
+                <div class="bg-primary-fixed/20 rounded-xl p-4 mb-8 flex items-start gap-3">
+                  <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 flex-shrink-0">info</span>
+                  <p class="font-label-sm text-label-sm text-on-surface-variant">
+                    Complete this section only if the participant has a nominee or guardian who acts on their behalf. All fields in this section are optional.
+                  </p>
+                </div>
+
+                <div class="space-y-6">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="guardian-name">
+                        Full Name
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="guardian-name"
+                        name="guardian_name"
+                        placeholder="Guardian's full name"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="guardian-relation">
+                        Relationship to Participant
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="guardian-relation"
+                        name="guardian_relation"
+                        placeholder="e.g. Parent, Legal Guardian"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="guardian-phone">
+                        Phone
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="guardian-phone"
+                        name="guardian_phone"
+                        placeholder="04XX XXX XXX"
+                        type="tel"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="guardian-email">
+                        Email
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="guardian-email"
+                        name="guardian_email"
+                        placeholder="guardian@example.com"
+                        type="email"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="guardian-authority">
+                      Has Legal Authority to Act for the Participant?
+                    </label>
+                    <select
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="guardian-authority"
+                      name="guardian_authority"
+                    >
+                      <option value="" disabled selected>Select an option</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                      <option value="pending">Pending / In Progress</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: NDIS Plan Information -->
+            <div class="step-section" data-step="4">
+              <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high p-6 md:p-10">
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="bg-secondary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-secondary text-[24px]">description</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">NDIS Plan Information</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Details about the participant's current NDIS plan</p>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2" for="ndis-number">
+                      NDIS Number <span class="text-error">*</span>
+                    </label>
+                    <input
+                      class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                      id="ndis-number"
+                      name="ndis_number"
+                      placeholder="Enter NDIS participant number"
+                      required
+                      type="text"
+                    />
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="ndis-plan-start">
+                        NDIS Plan Start Date <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="ndis-plan-start"
+                        name="ndis_plan_start"
+                        required
+                        type="date"
+                      />
+                    </div>
+                    <div>
+                      <label class="block font-label-md text-label-md text-on-surface mb-2" for="ndis-plan-end">
+                        NDIS Plan End Date <span class="text-error">*</span>
+                      </label>
+                      <input
+                        class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-all font-body-md"
+                        id="ndis-plan-end"
+                        name="ndis_plan_end"
+                        required
+                        type="date"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-label-md text-label-md text-on-surface mb-2">
+                      Upload NDIS Plan <span class="text-error">*</span>
+                    </label>
+                    <div class="upload-zone rounded-xl p-8 text-center cursor-pointer" id="upload-zone">
+                      <input
+                        class="hidden"
+                        id="ndis-plan-upload"
+                        name="ndis_plan_upload"
+                        type="file"
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                        required
+                      />
+                      <span class="material-symbols-outlined text-outline text-[48px] mb-3 block">cloud_upload</span>
+                      <p class="font-label-md text-label-md text-on-surface mb-1">
+                        Click to upload or drag and drop
+                      </p>
+                      <p class="font-label-sm text-label-sm text-on-surface-variant">
+                        PDF, DOC, DOCX, JPG, or PNG (max. 10MB)
+                      </p>
+                      <div class="hidden mt-4 bg-secondary-fixed/20 rounded-lg p-3 flex items-center gap-3 justify-center" id="upload-preview">
+                        <span class="material-symbols-outlined text-secondary text-[24px]">check_circle</span>
+                        <span class="font-label-md text-label-md text-on-surface" id="upload-filename"></span>
+                        <button type="button" class="text-error hover:text-error-container ml-2" id="upload-remove">
+                          <span class="material-symbols-outlined text-[20px]">close</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5: Consent & Declaration -->
+            <div class="step-section" data-step="5">
+              <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-container-high p-6 md:p-10">
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="bg-primary-fixed/50 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+                  </div>
+                  <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Consent & Declaration</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Please review and confirm the following</p>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div class="bg-surface-container-low rounded-xl p-6 border border-surface-container-high">
+                    <h3 class="font-label-md text-label-md text-on-surface mb-4">By submitting this referral, you confirm that:</h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-secondary mt-0.5 flex-shrink-0 text-[18px]">check_circle</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant text-[15px]">
+                          The information provided in this form is true and accurate to the best of your knowledge.
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-secondary mt-0.5 flex-shrink-0 text-[18px]">check_circle</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant text-[15px]">
+                          The participant (or their authorised representative) has given consent for this referral to be made.
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-secondary mt-0.5 flex-shrink-0 text-[18px]">check_circle</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant text-[15px]">
+                          You understand that PlanWise will contact the participant to discuss their plan management needs.
+                        </span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-secondary mt-0.5 flex-shrink-0 text-[18px]">check_circle</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant text-[15px]">
+                          You acknowledge PlanWise's <a href="privacy-policy.html" target="_blank" class="text-primary hover:text-primary-container underline">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" class="text-primary hover:text-primary-container underline">Terms of Service</a>.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="flex items-start gap-3 p-4 rounded-xl border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors cursor-pointer" id="consent-wrapper">
+                    <input
+                      class="custom-checkbox mt-0.5"
+                      id="consent-checkbox"
+                      name="consent"
+                      required
+                      type="checkbox"
+                    />
+                    <label class="font-body-md text-body-md text-on-surface cursor-pointer select-none" for="consent-checkbox">
+                      I confirm that the participant has given informed consent for this referral and for PlanWise to collect and use their personal information for the purpose of NDIS plan management. <span class="text-error">*</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex items-center justify-between mt-8 gap-4">
+              <button
+                class="hidden bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors duration-300 font-label-md text-label-md px-6 py-3 rounded-full items-center justify-center h-[48px] gap-2"
+                id="btn-prev"
+                type="button"
+              >
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                Previous
+              </button>
+              <div class="flex-1"></div>
+              <button
+                class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full flex items-center justify-center h-[48px] gap-2 shadow-md hover:shadow-lg"
+                id="btn-next"
+                type="button"
+              >
+                Next Step
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </button>
+              <button
+                class="hidden bg-secondary text-on-secondary hover:bg-secondary-container transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full items-center justify-center h-[48px] gap-2 shadow-md hover:shadow-lg"
+                id="btn-submit"
+                type="submit"
+              >
+                <span class="material-symbols-outlined text-[20px]">send</span>
+                Submit Referral
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Message (hidden initially) -->
+          <div class="hidden" id="referral-success">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-xl border border-secondary-fixed p-10 md:p-16 text-center">
+              <div class="bg-secondary-fixed/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="material-symbols-outlined text-secondary text-[48px]" style="font-variation-settings: &quot;FILL&quot; 1">check_circle</span>
+              </div>
+              <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">
+                Referral Submitted Successfully!
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mb-8">
+                Thank you for referring a participant to PlanWise. Our team will review the referral and reach out within <strong>1–2 business days</strong> to begin the onboarding process.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  class="bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full flex items-center justify-center h-[48px] gap-2 shadow-md"
+                  href="refer.html"
+                >
+                  <span class="material-symbols-outlined text-[20px]">group_add</span>
+                  Refer Another Participant
+                </a>
+                <a
+                  class="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-on-primary transition-colors duration-300 font-label-md text-label-md px-8 py-3 rounded-full flex items-center justify-center h-[48px]"
+                  href="index.html"
+                >
+                  Back to Home
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer></footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Intersection Observer for scroll animations
+        const animationObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = "running";
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        document.querySelectorAll(".slide-up, .fade-in").forEach((el) => {
+          animationObserver.observe(el);
+        });
+
+        // ---- Step Wizard Logic ----
+        const totalSteps = 5;
+        let currentStep = 1;
+
+        const form = document.getElementById("referral-form");
+        const btnNext = document.getElementById("btn-next");
+        const btnPrev = document.getElementById("btn-prev");
+        const btnSubmit = document.getElementById("btn-submit");
+        const successPanel = document.getElementById("referral-success");
+
+        function showStep(step) {
+          // Hide all step sections
+          document.querySelectorAll(".step-section").forEach((section) => {
+            section.classList.remove("active");
+          });
+          // Show current
+          const target = document.querySelector(`[data-step="${step}"]`);
+          if (target) target.classList.add("active");
+
+          // Update progress dots and connectors
+          for (let i = 1; i <= totalSteps; i++) {
+            const dot = document.querySelector(`[data-step-dot="${i}"]`);
+            const connector = document.querySelector(`[data-step-connector="${i}"]`);
+            const label = dot ? dot.closest(".flex.flex-col").querySelector("span:last-child") : null;
+
+            if (dot) {
+              dot.classList.remove("active", "completed", "inactive");
+              if (i < step) {
+                dot.classList.add("completed");
+                dot.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+              } else if (i === step) {
+                dot.classList.add("active");
+                dot.textContent = i;
+              } else {
+                dot.classList.add("inactive");
+                dot.textContent = i;
+              }
+            }
+            if (label) {
+              if (i <= step) {
+                label.classList.remove("text-on-surface-variant");
+                label.classList.add("text-on-surface");
+              } else {
+                label.classList.remove("text-on-surface");
+                label.classList.add("text-on-surface-variant");
+              }
+            }
+            if (connector) {
+              connector.classList.remove("completed", "inactive");
+              connector.classList.add(i < step ? "completed" : "inactive");
+            }
+          }
+
+          // Toggle prev/next/submit
+          btnPrev.style.display = step > 1 ? "inline-flex" : "none";
+          btnNext.style.display = step < totalSteps ? "inline-flex" : "none";
+          btnSubmit.style.display = step === totalSteps ? "inline-flex" : "none";
+
+          // Scroll to top of form
+          window.scrollTo({ top: 280, behavior: "smooth" });
+        }
+
+        function validateCurrentStep() {
+          const activeSection = document.querySelector(`[data-step="${currentStep}"]`);
+          if (!activeSection) return true;
+
+          const requiredFields = activeSection.querySelectorAll("[required]");
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            // Remove previous error styles
+            field.classList.remove("border-error", "ring-error");
+
+            if (field.type === "checkbox") {
+              if (!field.checked) {
+                isValid = false;
+                field.classList.add("border-error");
+              }
+            } else if (!field.value.trim()) {
+              isValid = false;
+              field.classList.add("border-error", "ring-1", "ring-error");
+            }
+            // Email validation
+            if (field.type === "email" && field.value.trim()) {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(field.value.trim())) {
+                isValid = false;
+                field.classList.add("border-error", "ring-1", "ring-error");
+              }
+            }
+          });
+
+          if (!isValid) {
+            // Focus the first invalid field
+            const firstInvalid = activeSection.querySelector(".border-error");
+            if (firstInvalid) {
+              firstInvalid.focus();
+              firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }
+
+          return isValid;
+        }
+
+        btnNext.addEventListener("click", () => {
+          if (validateCurrentStep()) {
+            currentStep = Math.min(currentStep + 1, totalSteps);
+            showStep(currentStep);
+          }
+        });
+
+        btnPrev.addEventListener("click", () => {
+          currentStep = Math.max(currentStep - 1, 1);
+          showStep(currentStep);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!validateCurrentStep()) return;
+
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          console.log("Referral form submitted:", data);
+
+          // Show success
+          form.style.display = "none";
+          document.getElementById("step-progress").style.display = "none";
+          successPanel.classList.remove("hidden");
+          successPanel.style.animation = "fadeSlideIn 0.6s ease-out forwards";
+          window.scrollTo({ top: 200, behavior: "smooth" });
+        });
+
+        // ---- File Upload Logic ----
+        const uploadZone = document.getElementById("upload-zone");
+        const fileInput = document.getElementById("ndis-plan-upload");
+        const uploadPreview = document.getElementById("upload-preview");
+        const uploadFilename = document.getElementById("upload-filename");
+        const uploadRemove = document.getElementById("upload-remove");
+
+        uploadZone.addEventListener("click", (e) => {
+          if (e.target.id !== "upload-remove" && !e.target.closest("#upload-remove")) {
+            fileInput.click();
+          }
+        });
+
+        uploadZone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          uploadZone.classList.add("dragover");
+        });
+
+        uploadZone.addEventListener("dragleave", () => {
+          uploadZone.classList.remove("dragover");
+        });
+
+        uploadZone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          uploadZone.classList.remove("dragover");
+          if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            showUploadedFile(e.dataTransfer.files[0]);
+          }
+        });
+
+        fileInput.addEventListener("change", () => {
+          if (fileInput.files.length) {
+            showUploadedFile(fileInput.files[0]);
+          }
+        });
+
+        function showUploadedFile(file) {
+          uploadFilename.textContent = file.name;
+          uploadPreview.classList.remove("hidden");
+          uploadPreview.classList.add("flex");
+        }
+
+        uploadRemove.addEventListener("click", (e) => {
+          e.stopPropagation();
+          fileInput.value = "";
+          uploadPreview.classList.add("hidden");
+          uploadPreview.classList.remove("flex");
+        });
+
+        // Remove error styling on input
+        document.querySelectorAll("#referral-form input, #referral-form select, #referral-form textarea").forEach((field) => {
+          field.addEventListener("input", () => {
+            field.classList.remove("border-error", "ring-1", "ring-error");
+          });
+          field.addEventListener("change", () => {
+            field.classList.remove("border-error", "ring-1", "ring-error");
+          });
+        });
+
+        // Initialize step
+        showStep(1);
+      });
+    </script>
+  </body>
+</html>
