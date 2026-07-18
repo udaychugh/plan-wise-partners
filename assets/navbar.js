@@ -1,4 +1,20 @@
 (function () {
+  const GA_MEASUREMENT_ID = "G-LGWRYDMW37";
+
+  const gaScript = document.createElement("script");
+  gaScript.async = true;
+  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(gaScript);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  window.gtag = gtag;
+
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID);
+
   const NAVBAR_HTML = `
     <nav
       class="fixed w-full top-0 z-50 bg-surface/90 dark:bg-surface-container-lowest/90 border-b border-outline-variant/30 backdrop-blur-md shadow-sm transition-all duration-300"
