@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
     <script id="tailwind-config">
@@ -88,13 +88,13 @@
               xl: "80px",
             },
             fontFamily: {
-              "headline-lg": ["Atkinson Hyperlegible Next"],
-              "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
-              "body-lg": ["Atkinson Hyperlegible Next"],
-              "body-md": ["Atkinson Hyperlegible Next"],
-              "label-md": ["Atkinson Hyperlegible Next"],
-              "label-sm": ["Atkinson Hyperlegible Next"],
-              "headline-md": ["Atkinson Hyperlegible Next"],
+              "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+              "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
+              "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+              "body-md": ["Plus Jakarta Sans", "sans-serif"],
+              "label-md": ["Plus Jakarta Sans", "sans-serif"],
+              "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+              "headline-md": ["Plus Jakarta Sans", "sans-serif"],
             },
             fontSize: {
               "headline-lg": [
@@ -193,20 +193,32 @@
 
       .parallax-panel {
         background-image:
-          linear-gradient(135deg, rgba(27, 28, 28, 0.82), rgba(112, 72, 175, 0.7)),
+          linear-gradient(
+            135deg,
+            rgba(27, 28, 28, 0.82),
+            rgba(112, 72, 175, 0.7)
+          ),
           url("assets/parallex-bg.webp");
-        background-size: cover, auto 100%;
+        background-size:
+          cover,
+          auto 100%;
         background-repeat: no-repeat, repeat-x;
-        background-position: 0 0, 0 center;
+        background-position:
+          0 0,
+          0 center;
         animation: marquee 120s linear infinite;
       }
 
       @keyframes marquee {
         0% {
-          background-position: 0 0, 0 center;
+          background-position:
+            0 0,
+            0 center;
         }
         100% {
-          background-position: 0 0, -2000px center;
+          background-position:
+            0 0,
+            -2000px center;
         }
       }
     </style>
@@ -256,12 +268,6 @@
                 href="#contact"
               >
                 Get Started Today
-              </a>
-              <a
-                class="bg-transparent border-2 border-secondary text-on-surface hover:bg-secondary-fixed/50 transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full flex items-center justify-center h-[56px]"
-                href="#contact"
-              >
-                Book a Free Consultation
               </a>
             </div>
             <!-- Trust Indicators -->
@@ -314,74 +320,45 @@
                 src="assets/hero-image.webp"
               />
             </div>
-            <!-- Floating stat card -->
-            <div
-              class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-xl shadow-xl z-20 border border-surface-container-high flex items-center gap-4 animate-bounce"
-              style="animation-duration: 3s"
-            >
-              <div
-                class="bg-primary-container text-on-primary-container p-3 rounded-full flex-shrink-0"
-              >
-                <span class="material-symbols-outlined text-[28px]"
-                  >payments</span
-                >
-              </div>
-              <div>
-                <p
-                  class="font-headline-md text-headline-md text-on-surface mb-1"
-                >
-                  24-48 hr
-                </p>
-                <p class="font-label-sm text-label-sm text-on-surface-variant">
-                  Invoice Turnaround
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
-      <!-- Stats Section -->
-      <section class="py-16 bg-primary text-on-primary">
+      <!-- Key Highlights Section -->
+      <section class="relative bg-gradient-to-r from-primary via-primary-container to-primary text-on-primary py-12 md:py-16 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div
-          class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop"
+          class="relative z-10 max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop"
         >
           <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
           >
-            <div class="slide-up">
-              <div
-                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold mb-2"
-              >
-                $0
+            <!-- Highlight 1: Turnaround -->
+            <div class="flex items-center gap-4 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 slide-up">
+              <div class="bg-white/20 p-3.5 rounded-xl flex-shrink-0 text-secondary-fixed">
+                <span class="material-symbols-outlined text-[32px]">schedule</span>
               </div>
-              <div
-                class="font-label-md text-on-primary/80 uppercase tracking-wider"
-              >
-                AUD Cost to You
-              </div>
-            </div>
-            <div class="slide-up delay-100">
-              <div
-                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold mb-2"
-              >
-                24h
-              </div>
-              <div
-                class="font-label-md text-on-primary/80 uppercase tracking-wider"
-              >
-                Invoice Payment
+              <div>
+                <div class="font-headline-md text-headline-md font-bold text-white mb-0.5">
+                  24–48 Hours
+                </div>
+                <div class="font-label-sm text-on-primary/80 text-sm font-medium">
+                  Fast Invoice Turnaround
+                </div>
               </div>
             </div>
-            <div class="slide-up delay-200">
-              <div
-                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold mb-2"
-              >
-                100%
+
+            <!-- Highlight 2: Coverage -->
+            <div class="flex items-center gap-4 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 slide-up delay-100">
+              <div class="bg-white/20 p-3.5 rounded-xl flex-shrink-0 text-secondary-fixed">
+                <span class="material-symbols-outlined text-[32px]">public</span>
               </div>
-              <div
-                class="font-label-md text-on-primary/80 uppercase tracking-wider"
-              >
-                Australia-Wide
+              <div>
+                <div class="font-headline-md text-headline-md font-bold text-white mb-0.5">
+                  Australia-Wide
+                </div>
+                <div class="font-label-sm text-on-primary/80 text-sm font-medium">
+                  Nationwide NDIS Support
+                </div>
               </div>
             </div>
           </div>
@@ -792,7 +769,10 @@
               </h2>
               <div class="space-y-6 mb-8">
                 <p class="font-body-md text-body-md text-on-surface-variant">
-                  Our Service Agreement is designed to clearly outline how we work with you and what you can expect from PlanWise. It establishes the foundation of our professional relationship and ensures complete transparency in all our dealings.
+                  Our Service Agreement is designed to clearly outline how we
+                  work with you and what you can expect from PlanWise. It
+                  establishes the foundation of our professional relationship
+                  and ensures complete transparency in all our dealings.
                 </p>
                 <ul class="space-y-4">
                   <li class="flex items-start gap-3">
@@ -801,7 +781,9 @@
                       >check_circle</span
                     >
                     <span class="font-body-md text-on-surface"
-                      ><strong>Clear responsibilities:</strong> You'll understand exactly what we do and what's expected from both sides.</span
+                      ><strong>Clear responsibilities:</strong> You'll
+                      understand exactly what we do and what's expected from
+                      both sides.</span
                     >
                   </li>
                   <li class="flex items-start gap-3">
@@ -810,7 +792,8 @@
                       >check_circle</span
                     >
                     <span class="font-body-md text-on-surface"
-                      ><strong>Professional standards:</strong> We outline our commitment to NDIS compliance and best practices.</span
+                      ><strong>Professional standards:</strong> We outline our
+                      commitment to NDIS compliance and best practices.</span
                     >
                   </li>
                   <li class="flex items-start gap-3">
@@ -819,7 +802,8 @@
                       >check_circle</span
                     >
                     <span class="font-body-md text-on-surface"
-                      ><strong>Your protections:</strong> Details about privacy, confidentiality, and your rights as a participant.</span
+                      ><strong>Your protections:</strong> Details about privacy,
+                      confidentiality, and your rights as a participant.</span
                     >
                   </li>
                   <li class="flex items-start gap-3">
@@ -828,7 +812,8 @@
                       >check_circle</span
                     >
                     <span class="font-body-md text-on-surface"
-                      ><strong>How we communicate:</strong> Our commitment to keeping you informed and accessible.</span
+                      ><strong>How we communicate:</strong> Our commitment to
+                      keeping you informed and accessible.</span
                     >
                   </li>
                 </ul>
@@ -838,7 +823,9 @@
                 href="service-agreement.html"
               >
                 View Full Service Agreement
-                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  >arrow_forward</span
+                >
               </a>
             </div>
           </div>
@@ -846,20 +833,33 @@
       </section>
       <!-- Switch to PlanWise -->
       <section class="py-20" id="switch-to-us">
-        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-          <div class="parallax-panel relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+        <div
+          class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop"
+        >
+          <div
+            class="parallax-panel relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl"
+          >
             <div class="absolute inset-0 bg-black/20"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center px-6 py-14 md:px-12 md:py-20">
+            <div
+              class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center px-6 py-14 md:px-12 md:py-20"
+            >
               <div class="slide-up">
-                <span class="font-label-md text-label-md uppercase tracking-[0.24em] text-secondary-fixed mb-3 block">
+                <span
+                  class="font-label-md text-label-md uppercase tracking-[0.24em] text-secondary-fixed mb-3 block"
+                >
                   Switch with confidence
                 </span>
-                <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-6">
+                <h2
+                  class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-6"
+                >
                   Ready to simplify your NDIS journey?
                 </h2>
-                <p class="font-body-md text-body-md text-white/90 max-w-xl mb-8">
-                  Switch to PlanWise today and feel the difference of a plan manager that keeps things clear, responsive, and easy.
-                  It costs you nothing.
+                <p
+                  class="font-body-md text-body-md text-white/90 max-w-xl mb-8"
+                >
+                  Switch to PlanWise today and feel the difference of a plan
+                  manager that keeps things clear, responsive, and easy. It
+                  costs you nothing.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                   <a
@@ -877,22 +877,47 @@
                 </div>
               </div>
               <div class="slide-up delay-200">
-                <div class="bg-surface-container-lowest/95 rounded-2xl p-8 md:p-10 shadow-xl border border-white/20">
-                  <span class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-3">
+                <div
+                  class="bg-surface-container-lowest/95 rounded-2xl p-8 md:p-10 shadow-xl border border-white/20"
+                >
+                  <span
+                    class="font-label-md text-label-md uppercase tracking-widest text-primary block mb-3"
+                  >
                     How we help
                   </span>
                   <ul class="space-y-4">
                     <li class="flex items-start gap-3">
-                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
-                      <span class="font-body-md text-body-md text-on-surface-variant">We take care of the handover from your current plan manager.</span>
+                      <span
+                        class="material-symbols-outlined text-secondary mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >We take care of the handover from your current plan
+                        manager.</span
+                      >
                     </li>
                     <li class="flex items-start gap-3">
-                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
-                      <span class="font-body-md text-body-md text-on-surface-variant">We keep providers informed so your support continues smoothly.</span>
+                      <span
+                        class="material-symbols-outlined text-secondary mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >We keep providers informed so your support continues
+                        smoothly.</span
+                      >
                     </li>
                     <li class="flex items-start gap-3">
-                      <span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
-                      <span class="font-body-md text-body-md text-on-surface-variant">We make the switch simple, personal, and stress-free.</span>
+                      <span
+                        class="material-symbols-outlined text-secondary mt-0.5"
+                        >check_circle</span
+                      >
+                      <span
+                        class="font-body-md text-body-md text-on-surface-variant"
+                        >We make the switch simple, personal, and
+                        stress-free.</span
+                      >
                     </li>
                   </ul>
                 </div>
@@ -902,25 +927,56 @@
         </div>
       </section>
       <!-- Refer a Participant Section -->
-      <section class="py-20 bg-gradient-to-br from-primary-fixed/40 via-surface to-secondary-fixed/30" id="refer">
-        <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-          <div class="relative bg-surface-container-lowest rounded-3xl shadow-xl border border-surface-container-high overflow-hidden">
+      <section
+        class="py-20 bg-gradient-to-br from-primary-fixed/40 via-surface to-secondary-fixed/30"
+        id="refer"
+      >
+        <div
+          class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop"
+        >
+          <div
+            class="relative bg-surface-container-lowest rounded-3xl shadow-xl border border-surface-container-high overflow-hidden"
+          >
             <!-- Decorative gradient accent -->
-            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-primary-container to-secondary"></div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-8 md:p-14">
+            <div
+              class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-primary-container to-secondary"
+            ></div>
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-8 md:p-14"
+            >
               <div class="slide-up">
-                <div class="inline-flex items-center gap-2 bg-primary-fixed/40 px-4 py-2 rounded-full mb-6">
-                  <span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1">group_add</span>
-                  <span class="font-label-sm text-label-sm text-primary font-bold">Make a Difference</span>
+                <div
+                  class="inline-flex items-center gap-2 bg-primary-fixed/40 px-4 py-2 rounded-full mb-6"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary text-[20px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >group_add</span
+                  >
+                  <span
+                    class="font-label-sm text-label-sm text-primary font-bold"
+                    >Make a Difference</span
+                  >
                 </div>
-                <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">
+                <h2
+                  class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6"
+                >
                   Refer a Participant to PlanWise
                 </h2>
-                <p class="font-body-md text-body-md text-on-surface-variant mb-4 max-w-xl">
-                  Know someone who could benefit from stress-free NDIS plan management? Whether you're a support coordinator, allied health professional, family member, or friend — referring a participant to PlanWise is quick and easy.
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant mb-4 max-w-xl"
+                >
+                  Know someone who could benefit from stress-free NDIS plan
+                  management? Whether you're a support coordinator, allied
+                  health professional, family member, or friend — referring a
+                  participant to PlanWise is quick and easy.
                 </p>
-                <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-xl">
-                  Complete our simple referral form and we'll take it from there, ensuring a smooth onboarding experience with dedicated support every step of the way.
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-xl"
+                >
+                  Complete our simple referral form and we'll take it from
+                  there, ensuring a smooth onboarding experience with dedicated
+                  support every step of the way.
                 </p>
                 <a
                   class="inline-flex bg-primary text-on-primary hover:bg-primary-container transition-colors duration-300 font-label-md text-label-md px-8 py-4 rounded-full items-center justify-center shadow-md hover:shadow-lg h-[56px] gap-2"
@@ -928,30 +984,78 @@
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span class="material-symbols-outlined text-[20px]">open_in_new</span>
+                  <span class="material-symbols-outlined text-[20px]"
+                    >open_in_new</span
+                  >
                   Refer Someone Now
                 </a>
               </div>
-              <div class="slide-up delay-200 hidden lg:flex items-center justify-center">
+              <div
+                class="slide-up delay-200 hidden lg:flex items-center justify-center"
+              >
                 <div class="relative">
-                  <div class="absolute inset-0 bg-gradient-to-tr from-primary-fixed-dim/30 to-secondary-fixed-dim/20 rounded-full blur-3xl transform scale-125"></div>
-                  <div class="relative bg-gradient-to-br from-primary/10 to-secondary-fixed/20 rounded-2xl p-10 border border-surface-container-high">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-tr from-primary-fixed-dim/30 to-secondary-fixed-dim/20 rounded-full blur-3xl transform scale-125"
+                  ></div>
+                  <div
+                    class="relative bg-gradient-to-br from-primary/10 to-secondary-fixed/20 rounded-2xl p-10 border border-surface-container-high"
+                  >
                     <div class="grid grid-cols-2 gap-6">
-                      <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center">
-                        <span class="material-symbols-outlined text-primary text-[36px] mb-2 block" style="font-variation-settings: &quot;FILL&quot; 1">person_add</span>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">Referrer Details</p>
+                      <div
+                        class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-primary text-[36px] mb-2 block"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >person_add</span
+                        >
+                        <p
+                          class="font-label-sm text-label-sm text-on-surface-variant"
+                        >
+                          Referrer Details
+                        </p>
                       </div>
-                      <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center">
-                        <span class="material-symbols-outlined text-secondary text-[36px] mb-2 block" style="font-variation-settings: &quot;FILL&quot; 1">accessible</span>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">Participant Info</p>
+                      <div
+                        class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-secondary text-[36px] mb-2 block"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >accessible</span
+                        >
+                        <p
+                          class="font-label-sm text-label-sm text-on-surface-variant"
+                        >
+                          Participant Info
+                        </p>
                       </div>
-                      <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center">
-                        <span class="material-symbols-outlined text-primary text-[36px] mb-2 block" style="font-variation-settings: &quot;FILL&quot; 1">shield_person</span>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">Guardian Details</p>
+                      <div
+                        class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-primary text-[36px] mb-2 block"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >shield_person</span
+                        >
+                        <p
+                          class="font-label-sm text-label-sm text-on-surface-variant"
+                        >
+                          Guardian Details
+                        </p>
                       </div>
-                      <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center">
-                        <span class="material-symbols-outlined text-secondary text-[36px] mb-2 block" style="font-variation-settings: &quot;FILL&quot; 1">description</span>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">NDIS Plan Info</p>
+                      <div
+                        class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-surface-container-high text-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-secondary text-[36px] mb-2 block"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >description</span
+                        >
+                        <p
+                          class="font-label-sm text-label-sm text-on-surface-variant"
+                        >
+                          NDIS Plan Info
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -991,14 +1095,22 @@
                 <div
                   class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mb-4"
                 >
-                  <span class="material-symbols-outlined text-[16px]">support_agent</span>
+                  <span class="material-symbols-outlined text-[16px]"
+                    >support_agent</span
+                  >
                   Dedicated NDIS Support
                 </div>
-                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 font-bold">
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface mb-3 font-bold"
+                >
                   Let's make managing your plan effortless.
                 </h3>
-                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                  Whether you are signing up, switching plan managers, or have questions about funding categories, our dedicated team is here to guide you every step of the way.
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant leading-relaxed"
+                >
+                  Whether you are signing up, switching plan managers, or have
+                  questions about funding categories, our dedicated team is here
+                  to guide you every step of the way.
                 </p>
               </div>
 
@@ -1013,15 +1125,28 @@
                     <div
                       class="bg-primary/10 text-primary p-3 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors flex-shrink-0"
                     >
-                      <span class="material-symbols-outlined text-[24px]">call</span>
+                      <span class="material-symbols-outlined text-[24px]"
+                        >call</span
+                      >
                     </div>
                     <div>
-                      <span class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Phone Support</span>
-                      <span class="font-bold text-on-surface text-lg group-hover:text-primary transition-colors">0498475578</span>
-                      <p class="text-xs text-on-surface-variant/80 mt-0.5">Mon – Fri: 9:00 AM – 5:00 PM AEST</p>
+                      <span
+                        class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant"
+                        >Phone Support</span
+                      >
+                      <span
+                        class="font-bold text-on-surface text-lg group-hover:text-primary transition-colors"
+                        >0498475578</span
+                      >
+                      <p class="text-xs text-on-surface-variant/80 mt-0.5">
+                        Mon – Fri: 9:00 AM – 5:00 PM AEST
+                      </p>
                     </div>
                   </div>
-                  <span class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all"
+                    >chevron_right</span
+                  >
                 </a>
 
                 <!-- Email Card -->
@@ -1033,15 +1158,28 @@
                     <div
                       class="bg-primary/10 text-primary p-3 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors flex-shrink-0"
                     >
-                      <span class="material-symbols-outlined text-[24px]">mail</span>
+                      <span class="material-symbols-outlined text-[24px]"
+                        >mail</span
+                      >
                     </div>
                     <div class="min-w-0 flex-1">
-                      <span class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Email Enquiries</span>
-                      <span class="font-bold text-on-surface text-base break-all group-hover:text-primary transition-colors">contact@plan-wise.lgpartners.com.au</span>
-                      <p class="text-xs text-on-surface-variant/80 mt-0.5">Responses within 1 business day</p>
+                      <span
+                        class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant"
+                        >Email Enquiries</span
+                      >
+                      <span
+                        class="font-bold text-on-surface text-base break-all group-hover:text-primary transition-colors"
+                        >contact@plan-wise.lgpartners.com.au</span
+                      >
+                      <p class="text-xs text-on-surface-variant/80 mt-0.5">
+                        Responses within 1 business day
+                      </p>
                     </div>
                   </div>
-                  <span class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 ml-2">chevron_right</span>
+                  <span
+                    class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 ml-2"
+                    >chevron_right</span
+                  >
                 </a>
               </div>
             </div>
@@ -1173,7 +1311,7 @@
               }
             });
           },
-          { threshold: 0.1 }
+          { threshold: 0.1 },
         );
 
         document.querySelectorAll(".slide-up, .fade-in").forEach((el) => {
@@ -1193,7 +1331,7 @@
             contactForm.reset();
             // Show success message (you could replace this with a proper notification)
             alert(
-              "Thank you for reaching out! We will get back to you shortly."
+              "Thank you for reaching out! We will get back to you shortly.",
             );
           });
         }

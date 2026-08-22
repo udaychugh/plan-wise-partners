@@ -19,28 +19,6 @@
             Empowering NDIS participants with transparent, stress-free plan
             management and dedicated support across Australia.
           </p>
-          <div class="flex gap-4 mt-2">
-            <a
-              aria-label="Facebook"
-              class="text-on-tertiary/80 hover:text-secondary-fixed transition-colors"
-              href="#"
-            >
-              <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: &quot;FILL&quot; 1"
-              >thumb_up</span>
-            </a>
-            <a
-              aria-label="LinkedIn"
-              class="text-on-tertiary/80 hover:text-secondary-fixed transition-colors"
-              href="#"
-            >
-              <span
-                class="material-symbols-outlined"
-                style="font-variation-settings: &quot;FILL&quot; 1"
-              >work</span>
-            </a>
-          </div>
         </div>
         <div class="col-span-1 flex flex-col gap-3">
           <h4
