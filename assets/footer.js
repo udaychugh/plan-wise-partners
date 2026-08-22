@@ -139,9 +139,9 @@
           <img
             src="assets/flags.png"
             alt="Aboriginal and Torres Strait Islander Flags"
-            class="w-40 mx-auto mt-3"
-            height="80"
-            width="150"
+            class="w-20 mx-auto mt-3"
+            height="35"
+            width="70"
           />
         </div>
         <p
