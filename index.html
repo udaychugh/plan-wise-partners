@@ -191,21 +191,6 @@
         scroll-behavior: smooth;
       }
 
-      /* Custom map placeholder styling */
-      .map-placeholder {
-        background: linear-gradient(to bottom right, #f0f3ff, #dee8ff);
-        position: relative;
-        overflow: hidden;
-      }
-      .map-placeholder::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(#ccc3d3 1px, transparent 1px);
-        background-size: 20px 20px;
-        opacity: 0.5;
-      }
-
       .parallax-panel {
         background-image:
           linear-gradient(135deg, rgba(27, 28, 28, 0.82), rgba(112, 72, 175, 0.7)),
@@ -997,80 +982,67 @@
           <div
             class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start slide-up delay-100"
           >
-            <!-- Left Column: Map and Contact Info -->
-            <div class="flex flex-col gap-8">
-              <!-- Map Container -->
+            <!-- Left Column: Support Highlights and Contact Methods -->
+            <div class="flex flex-col gap-6">
+              <!-- Info Box Card -->
               <div
-                class="map-placeholder rounded-xl overflow-hidden shadow-md border border-surface-container-high h-80"
+                class="bg-gradient-to-br from-primary/5 via-primary-fixed/20 to-surface-container-low p-8 rounded-2xl border border-primary/10 relative overflow-hidden"
               >
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481257.6215930624!2d137.91902192886533!3d-30.214971995478532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ad0dcce5fa90df%3A0x39ef9ef31f49ee6d!2sLG%20Community%20Partners!5e0!3m2!1sen!2sin!4v1781287908004!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div
+                  class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mb-4"
+                >
+                  <span class="material-symbols-outlined text-[16px]">support_agent</span>
+                  Dedicated NDIS Support
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 font-bold">
+                  Let's make managing your plan effortless.
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Whether you are signing up, switching plan managers, or have questions about funding categories, our dedicated team is here to guide you every step of the way.
+                </p>
               </div>
-              <!-- Contact Information -->
-              <div class="space-y-6">
-                <div class="flex items-start gap-4">
-                  <div
-                    class="bg-primary-container/20 p-3 rounded-lg flex-shrink-0 mt-1"
-                  >
-                    <span
-                      class="material-symbols-outlined text-primary text-[24px]"
-                      >call</span
+
+              <!-- Contact Methods Cards -->
+              <div class="flex flex-col gap-4">
+                <!-- Phone Card -->
+                <a
+                  href="tel:0498475578"
+                  class="group flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest border border-surface-container-high hover:border-primary/40 hover:shadow-md transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="bg-primary/10 text-primary p-3 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors flex-shrink-0"
                     >
+                      <span class="material-symbols-outlined text-[24px]">call</span>
+                    </div>
+                    <div>
+                      <span class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Phone Support</span>
+                      <span class="font-bold text-on-surface text-lg group-hover:text-primary transition-colors">0498475578</span>
+                      <p class="text-xs text-on-surface-variant/80 mt-0.5">Mon – Fri: 9:00 AM – 5:00 PM AEST</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4
-                      class="font-headline-md text-headline-md text-on-surface mb-1"
+                  <span class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all">chevron_right</span>
+                </a>
+
+                <!-- Email Card -->
+                <a
+                  href="mailto:contact@plan-wise.lgpartners.com.au"
+                  class="group flex items-center justify-between p-6 rounded-xl bg-surface-container-lowest border border-surface-container-high hover:border-primary/40 hover:shadow-md transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4 min-w-0">
+                    <div
+                      class="bg-primary/10 text-primary p-3 rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors flex-shrink-0"
                     >
-                      Phone
-                    </h4>
-                    <a
-                      class="font-body-md text-body-md text-primary hover:text-primary-container transition-colors"
-                      href="tel:0498475578"
-                      >0498475578</a
-                    >
+                      <span class="material-symbols-outlined text-[24px]">mail</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <span class="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Email Enquiries</span>
+                      <span class="font-bold text-on-surface text-base break-all group-hover:text-primary transition-colors">contact@plan-wise.lgpartners.com.au</span>
+                      <p class="text-xs text-on-surface-variant/80 mt-0.5">Responses within 1 business day</p>
+                    </div>
                   </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div
-                    class="bg-secondary-fixed/20 p-3 rounded-lg flex-shrink-0 mt-1"
-                  >
-                    <span
-                      class="material-symbols-outlined text-secondary text-[24px]"
-                      >location_on</span
-                    >
-                  </div>
-                  <div>
-                    <h4
-                      class="font-headline-md text-headline-md text-on-surface mb-1"
-                    >
-                      Address
-                    </h4>
-                    <p class="font-body-md text-body-md text-on-surface-variant">
-                      8 White Cedar Drive,<br />Castle Hill NSW 2154
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start gap-4">
-                  <div
-                    class="bg-tertiary/20 p-3 rounded-lg flex-shrink-0 mt-1"
-                  >
-                    <span
-                      class="material-symbols-outlined text-tertiary text-[24px]"
-                      >mail</span
-                    >
-                  </div>
-                  <div>
-                    <h4
-                      class="font-headline-md text-headline-md text-on-surface mb-1"
-                    >
-                      Email
-                    </h4>
-                    <a
-                      class="font-body-md text-body-md text-primary hover:text-primary-container transition-colors"
-                      href="mailto:contact@plan-wise.lgpartners.com.au"
-                      >contact@plan-wise.lgpartners.com.au</a
-                    >
-                  </div>
-                </div>
+                  <span class="material-symbols-outlined text-outline-variant group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 ml-2">chevron_right</span>
+                </a>
               </div>
             </div>
             <!-- Right Column: Contact Form -->

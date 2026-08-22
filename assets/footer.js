@@ -122,12 +122,6 @@
             <span class="material-symbols-outlined text-[18px]">mail</span>
             contact@plan-wise.lgpartners.com.au
           </p>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-start gap-2"
-          >
-            <span class="material-symbols-outlined text-[18px] mt-1">location_on</span>
-            8 White Cedar Drive,<br />Castle Hill NSW 2154
-          </p>
         </div>
         <div class="col-span-1 flex flex-col gap-3">
           <h4
