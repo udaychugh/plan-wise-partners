@@ -130,12 +130,19 @@
           <p
             class="font-label-sm text-label-sm text-on-tertiary/80 text-center italic"
           >
-            <strong>NDIS Acknowledgement:</strong> PlanWise acknowledges the
+            PlanWise acknowledges the
             Traditional Custodians of country throughout Australia and their
             connections to land, sea and community. We pay our respect to their
             Elders past and present and extend that respect to all Aboriginal
             and Torres Strait Islander peoples today.
           </p>
+          <img
+            src="assets/flags.png"
+            alt="Aboriginal and Torres Strait Islander Flags"
+            class="w-40 mx-auto mt-3"
+            height="80"
+            width="150"
+          />
         </div>
         <p
           class="font-label-sm text-label-sm text-on-tertiary/80 text-center"
@@ -148,7 +155,9 @@
   function getPageName() {
     const pathname = window.location.pathname.replace(/\\/g, "/");
     const segments = pathname.split("/").filter(Boolean);
-    return segments.length ? segments[segments.length - 1].toLowerCase() : "index.html";
+    return segments.length
+      ? segments[segments.length - 1].toLowerCase()
+      : "index.html";
   }
 
   function isIndexPage() {
@@ -169,9 +178,11 @@
     };
 
     Object.entries(pageLinks).forEach(([key, href]) => {
-      container.querySelectorAll(`[data-footer-link="${key}"]`).forEach((link) => {
-        link.setAttribute("href", href);
-      });
+      container
+        .querySelectorAll(`[data-footer-link="${key}"]`)
+        .forEach((link) => {
+          link.setAttribute("href", href);
+        });
     });
   }
 
