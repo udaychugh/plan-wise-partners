@@ -98,7 +98,7 @@
             class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
           >
             <span class="material-symbols-outlined text-[18px]">mail</span>
-            contact@plan-wise.lgpartners.com.au
+            contactus@planwise.lgpartners.com.au
           </p>
         </div>
         <div class="col-span-1 flex flex-col gap-3">
@@ -189,7 +189,7 @@
   function setYear(container) {
     const yearElement = container.querySelector("[data-footer-year]");
     if (yearElement) {
-      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} PlanWise Community Partners Trading as LG Community Partners Pty Ltd. Registered NDIS Provider.`;
+      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} PlanWise Community Partners Trading as LG Community Partners Pty Ltd.`;
     }
   }
 
