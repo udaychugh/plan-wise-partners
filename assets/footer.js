@@ -2,9 +2,9 @@
   const FOOTER_HTML = `
     <footer class="bg-tertiary dark:bg-tertiary-container w-full pt-xl pb-md">
       <div
-        class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-5 gap-gutter mb-8"
+        class="max-w-max-width mx-auto px-margin-mobile md:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-8 md:gap-6 lg:gap-8 mb-8"
       >
-        <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+        <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 flex flex-col gap-4">
           <span
             class="font-headline-md text-headline-md font-bold text-on-tertiary"
           >PlanWise</span>
@@ -20,7 +20,7 @@
             management and dedicated support across Australia.
           </p>
         </div>
-        <div class="col-span-1 flex flex-col gap-3">
+        <div class="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-3">
           <h4
             class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
           >
@@ -52,7 +52,7 @@
             href="#contact"
           >Contact</a>
         </div>
-        <div class="col-span-1 flex flex-col gap-3">
+        <div class="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-3">
           <h4
             class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
           >
@@ -83,25 +83,28 @@
             href="complaints.html"
           >Complaints &amp; Feedback</a>
         </div>
-        <div class="col-span-1 flex flex-col gap-3">
+        <div class="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-3 min-w-0">
           <h4
             class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
           >
             Contact Us
           </h4>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
+          <a
+            href="tel:0498475578"
+            class="font-label-sm text-label-sm text-on-tertiary/80 hover:text-on-tertiary flex items-center gap-2 transition-colors"
           >
-            <span class="material-symbols-outlined text-[18px]">call</span> 0498475578
-          </p>
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 flex items-center gap-2"
+            <span class="material-symbols-outlined text-[18px] shrink-0">call</span>
+            <span>0498475578</span>
+          </a>
+          <a
+            href="mailto:contactus@planwise.lgpartners.com.au"
+            class="font-label-sm text-label-sm text-on-tertiary/80 hover:text-on-tertiary flex items-start gap-2 break-all transition-colors"
           >
-            <span class="material-symbols-outlined text-[18px]">mail</span>
-            contactus@planwise.lgpartners.com.au
-          </p>
+            <span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5">mail</span>
+            <span>contactus@planwise.lgpartners.com.au</span>
+          </a>
         </div>
-        <div class="col-span-1 flex flex-col gap-3">
+        <div class="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-3">
           <h4
             class="font-headline-md text-headline-md font-bold text-secondary-fixed text-lg mb-2"
           >
@@ -122,7 +125,7 @@
         </div>
       </div>
       <div
-        class="px-margin-desktop max-w-[1440px] mx-auto border-t border-on-tertiary/20 pt-6 mt-6"
+        class="px-margin-mobile md:px-6 lg:px-8 max-w-[1440px] mx-auto border-t border-on-tertiary/20 pt-6 mt-6"
       >
         <div
           class="bg-tertiary-container/50 p-4 rounded-lg mb-6 border border-on-tertiary/10"
