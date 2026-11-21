@@ -97,11 +97,11 @@
             <span>0498475578</span>
           </a>
           <a
-            href="mailto:contactus@planwise.lgpartners.com.au"
+            href="mailto:planwise@lgpartners.com.au"
             class="font-label-sm text-label-sm text-on-tertiary/80 hover:text-on-tertiary flex items-start gap-2 break-all transition-colors"
           >
             <span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5">mail</span>
-            <span>contactus@planwise.lgpartners.com.au</span>
+            <span>planwise@lgpartners.com.au</span>
           </a>
         </div>
         <div class="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-3">
@@ -127,26 +127,6 @@
       <div
         class="px-margin-mobile md:px-6 lg:px-8 max-w-[1440px] mx-auto border-t border-on-tertiary/20 pt-6 mt-6"
       >
-        <div
-          class="bg-tertiary-container/50 p-4 rounded-lg mb-6 border border-on-tertiary/10"
-        >
-          <p
-            class="font-label-sm text-label-sm text-on-tertiary/80 text-center italic"
-          >
-            PlanWise acknowledges the
-            Traditional Custodians of country throughout Australia and their
-            connections to land, sea and community. We pay our respect to their
-            Elders past and present and extend that respect to all Aboriginal
-            and Torres Strait Islander peoples today.
-          </p>
-          <img
-            src="assets/flags.png"
-            alt="Aboriginal and Torres Strait Islander Flags"
-            class="w-20 mx-auto mt-3"
-            height="35"
-            width="70"
-          />
-        </div>
         <p
           class="font-label-sm text-label-sm text-on-tertiary/80 text-center"
           data-footer-year
