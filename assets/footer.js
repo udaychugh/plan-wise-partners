@@ -11,7 +11,7 @@
           <p
             class="font-label-sm text-label-sm text-on-tertiary/75 dark:text-on-tertiary-container/75 -mt-2 text-xs font-bold tracking-wide"
           >
-            Community Partners Trading as LG Community Partners Pty Ltd
+            LG Community Partners Pty Ltd trading as PlanWise Community Partners
           </p>
           <p
             class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 mt-2 text-sm"
@@ -192,7 +192,7 @@
   function setYear(container) {
     const yearElement = container.querySelector("[data-footer-year]");
     if (yearElement) {
-      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} PlanWise Community Partners Trading as LG Community Partners Pty Ltd.`;
+      yearElement.textContent = `\u00A9 ${new Date().getFullYear()} LG Community Partners Pty Ltd trading as PlanWise Community Partners.`;
     }
   }
 
