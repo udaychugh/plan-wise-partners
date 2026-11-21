@@ -14,6 +14,19 @@
             LG Community Partners Pty Ltd trading as PlanWise Community Partners
           </p>
           <p
+            class="font-label-sm text-label-sm text-on-tertiary/75 dark:text-on-tertiary-container/75 text-xs"
+          >
+            ABN:
+            <a
+              class="underline"
+              href="https://abr.business.gov.au/ABN/View?abn=68655766448"
+              target="_blank"
+              rel="noopener noreferrer"
+            >68 655 766 448</a>
+            <br />
+            NDIS provider registration number: To be added
+          </p>
+          <p
             class="font-label-sm text-label-sm text-on-tertiary/80 dark:text-on-tertiary-container/80 mt-2 text-sm"
           >
             Empowering NDIS participants with transparent, stress-free plan
